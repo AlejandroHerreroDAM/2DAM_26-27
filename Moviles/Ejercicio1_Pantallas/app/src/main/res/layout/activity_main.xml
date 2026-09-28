@@ -7,13 +7,324 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
+        android:id="@+id/ExamTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/examen_android"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/topMargin" />
+
+    <TextView
+        android:id="@+id/StudentData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_1_datos_del_alumno"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_light"
+        app:layout_constraintBottom_toTopOf="@+id/guideEmail"
+        app:layout_constraintStart_toStartOf="@+id/startMargin"
+        app:layout_constraintTop_toTopOf="@+id/guideName" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/NameTextField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nombre completo"
+        app:layout_constraintBottom_toBottomOf="@+id/StudentData"
+        app:layout_constraintEnd_toStartOf="@+id/endMargin"
+        app:layout_constraintStart_toStartOf="@+id/middleVertical"
+        app:layout_constraintTop_toTopOf="@+id/StudentData">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/MailTextField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Correo electrónico"
+        app:layout_constraintBottom_toTopOf="@+id/guideAnswer"
+        app:layout_constraintEnd_toStartOf="@+id/endMargin"
+        app:layout_constraintStart_toStartOf="@+id/startMargin"
+        app:layout_constraintTop_toTopOf="@+id/guideEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/answerData"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2. Selecciona la respuesta correcta"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideOptions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/optionsMargin"
+        app:layout_constraintTop_toTopOf="@+id/guideAnswer" />
+
+    <TextView
+        android:id="@+id/answerText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="¿Qué componente se utiliza para crear diseños flexibles?"
+        app:layout_constraintBottom_toTopOf="@+id/guideOptions2"
+        app:layout_constraintEnd_toStartOf="@+id/marginQuestion1"
+        app:layout_constraintStart_toStartOf="@+id/startMargin"
+        app:layout_constraintTop_toTopOf="@+id/guideOptions" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/enabled_selected"
+        app:layout_constraintBottom_toBottomOf="@+id/answerText"
+        app:layout_constraintEnd_toStartOf="@+id/endMargin"
+        app:layout_constraintStart_toStartOf="@+id/marginQuestion1"
+        app:layout_constraintTop_toTopOf="@+id/answerText">
+
+        <RadioButton
+            android:id="@+id/enabled_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:text="LinearLayout" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:enabled="true"
+            android:text="ContraintLayout" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:enabled="true"
+            android:text="FrameLayout" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/chooseOptionTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="3. Selecciona todas las que apliquen"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideQuestion2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/optionsMargin"
+        app:layout_constraintTop_toTopOf="@+id/guideOptions2" />
+
+    <TextView
+        android:id="@+id/textQuestion2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="¿Cuáles son los componentes de la arquitectura Android?"
+        app:layout_constraintEnd_toStartOf="@+id/endMargin"
+        app:layout_constraintStart_toStartOf="@+id/startMargin"
+        app:layout_constraintTop_toTopOf="@+id/guideQuestion2" />
+
+    <LinearLayout
+        android:id="@+id/checkbox_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/startMargin"
+        app:layout_constraintTop_toBottomOf="@+id/textQuestion2">
+
+        <CheckBox
+            android:id="@+id/checkbox_child_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Activity" />
+
+        <CheckBox
+            android:id="@+id/checkbox_child_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ViewModel" />
+
+        <CheckBox
+            android:id="@+id/checkbox_child_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JavaScript" />
+
+
+        <CheckBox
+            android:id="@+id/checkbox_child_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Repository" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/longQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="4. Pregunta de desarrollo"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/endMargin"
+        app:layout_constraintTop_toTopOf="@+id/guideQuestion3" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TextFieldQuestion3"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="Explica qué es Dependency Injection"
+        app:layout_constraintBottom_toTopOf="@+id/marginButtonSend"
+        app:layout_constraintEnd_toStartOf="@+id/endMargin"
+        app:layout_constraintStart_toStartOf="@+id/startMargin"
+        app:layout_constraintTop_toBottomOf="@+id/longQuestion">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/sendExamButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:text="Enviar Examen"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSend"
+        app:layout_constraintEnd_toStartOf="@+id/endMargin"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/startMargin" />
+
+
+
+    <!--    GUIDELINES-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startMargin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/optionsMargin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endMargin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middleVertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topMargin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideAnswer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.27" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideOptions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideOptions2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/marginQuestion1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideQuestion2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideQuestion3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/marginButtonSend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.91" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/buttonSend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
