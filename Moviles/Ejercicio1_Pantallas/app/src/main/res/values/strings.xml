@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ejercicio 1 Pantallas</string>
+    <string name="examen_android">Examen de Android</string>
+    <string name="_1_datos_del_alumno">1. Datos del Alumno</string>
 </resources>
