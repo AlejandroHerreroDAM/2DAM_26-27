@@ -2,4 +2,13 @@
     <string name="app_name">Ejercicio 1 Pantallas</string>
     <string name="examen_android">Examen de Android</string>
     <string name="_1_datos_del_alumno">1. Datos del Alumno</string>
+    <string name="nombre_completo">Nombre completo</string>
+    <string name="correo_electr_nico">Correo electrónico</string>
+    <string name="_2_selecciona_la_respuesta_correcta">2. Selecciona la respuesta correcta</string>
+    <string name="qu_componente_se_utiliza_para_crear_dise_os_flexibles">¿Qué componente se utiliza para crear diseños flexibles?</string>
+    <string name="linearlayout">LinearLayout</string>
+    <string name="contraintlayout">ContraintLayout</string>
+    <string name="framelayout">FrameLayout</string>
+    <string name="_3_selecciona_todas_las_que_apliquen">3. Selecciona todas las que apliquen</string>
+    <string name="cu_les_son_los_componentes_de_la_arquitectura_android">¿Cuáles son los componentes de la arquitectura Android?</string>
 </resources>
