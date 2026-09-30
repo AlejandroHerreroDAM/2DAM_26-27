@@ -5,23 +5,22 @@
     android:background="#000000"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <Button
         style="?attr/materialIconButtonFilledStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:backgroundTint="@color/black"
-        app:icon="@android:drawable/ic_media_play"
+        app:icon="@drawable/baseline_play_circle_outline_24"
         app:iconGravity="textStart"
-        app:iconSize="35dp"
+        app:iconSize="80dp"
         app:layout_constraintBottom_toTopOf="@+id/guideRow1"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideTeamStart"
         app:layout_constraintTop_toTopOf="@+id/guideMarginTop"
         app:layout_constraintVertical_bias="1.0"
         app:strokeColor="@color/white"
-        app:strokeWidth="4dp" />
-
-
+        />
 
     <TextView
         android:id="@+id/counter"
