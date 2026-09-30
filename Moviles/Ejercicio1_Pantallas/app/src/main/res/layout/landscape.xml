@@ -214,6 +214,56 @@
         app:layout_constraintTop_toTopOf="@+id/Equipo1" />
 
     <Button
+        android:id="@+id/faultTeam2"
+        android:layout_width="38dp"
+        android:layout_height="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="+"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideMarginBottom"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@+id/guideTeam2Start"
+        app:layout_constraintTop_toTopOf="@+id/guideRow4" />
+
+    <Button
+        android:id="@+id/faultTeam1"
+        android:layout_width="38dp"
+        android:layout_height="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="+"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideMarginBottom"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideTeamEnd"
+        app:layout_constraintTop_toTopOf="@+id/guideRow4" />
+
+    <Button
+        android:id="@+id/plus3Team"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="+3"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideRow3"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@+id/guideMarginStart" />
+
+    <Button
         android:id="@+id/plus2Team1"
         android:layout_width="58dp"
         android:layout_height="0dp"
@@ -299,14 +349,6 @@
 
     <!--    GIDELINES-->
 
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideMidHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideMidVErtical"
@@ -398,6 +440,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.80" />
+
+
 
 
 
