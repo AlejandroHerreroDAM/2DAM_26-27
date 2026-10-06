@@ -1,4 +1,4 @@
-package org.example;
+package org.example.bloque1;
 
 public class ContadorRunnable implements Runnable {
     @Override

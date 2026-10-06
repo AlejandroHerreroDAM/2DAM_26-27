@@ -1,4 +1,4 @@
-package org.example;
+package org.example.bloque1;
 
 import java.time.LocalTime;
 

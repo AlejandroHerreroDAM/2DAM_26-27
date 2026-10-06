@@ -1,4 +1,4 @@
-package org.example;
+package org.example.bloque1;
 
 public class ContadorThread extends Thread {
     public void run() {

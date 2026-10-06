@@ -1,5 +1,4 @@
-import org.example.ContadorRunnable;
-import org.example.ContadorThread;
+import org.example.bloque1.ContadorRunnable;
 
 void main(String[] args) {
 
