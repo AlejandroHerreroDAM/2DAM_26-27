@@ -12,5 +12,14 @@ public class ContadorThread extends Thread {
         }
     }
 
+    void main(String[] args) {
+
+
+        Thread r1 = new Thread(new ContadorRunnable());
+        Thread r2 = new Thread(new ContadorRunnable());
+        r1.start();
+        r2.start();
+    }
+
 
 }
