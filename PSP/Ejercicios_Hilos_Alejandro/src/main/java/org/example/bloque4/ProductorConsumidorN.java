@@ -1,6 +1,6 @@
 package org.example.bloque4;
 
-public class ProductorConsumidor {
+public class ProductorConsumidorN {
 
     private int buffer = 0;
 
@@ -25,7 +25,7 @@ public class ProductorConsumidor {
 
 
     public static void main(String[] args) {
-        ProductorConsumidor pc = new ProductorConsumidor();
+        ProductorConsumidorN pc = new ProductorConsumidorN();
 
         Thread hiloProductor = new Thread(()->{
             for (int i = 1; i <= 5; i++) {

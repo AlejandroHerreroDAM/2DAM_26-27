@@ -1,6 +1,6 @@
 package org.example.bloque3;
 
-public class Contador {
+public class ContadorRoto {
     private int contador = 0;
 
     public void incrementar(){
@@ -14,7 +14,7 @@ public class Contador {
     public static void main(String[] args) throws InterruptedException {
 
         Thread[] hilos = new Thread[10];
-        Contador contador = new Contador();
+        ContadorRoto contador = new ContadorRoto();
 
         Runnable tarea = () -> {
             for (int i = 0; i < 10000; i++) {

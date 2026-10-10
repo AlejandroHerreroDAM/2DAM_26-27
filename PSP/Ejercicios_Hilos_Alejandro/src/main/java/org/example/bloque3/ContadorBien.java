@@ -1,20 +1,20 @@
 package org.example.bloque3;
 
-public class ContadorRoto {
+public class ContadorBien {
     private int contador = 0;
 
-    public void incrementar(){
+    public synchronized void incrementar(){
         contador++;
     }
 
-    public int getContador(){
+    public synchronized int getContador(){
         return contador;
     }
 
     public static void main(String[] args) throws InterruptedException {
 
         Thread[] hilos = new Thread[10];
-        ContadorRoto contador = new ContadorRoto();
+        ContadorBien contador = new ContadorBien();
 
         Runnable tarea = () -> {
             for (int i = 0; i < 10000; i++) {
