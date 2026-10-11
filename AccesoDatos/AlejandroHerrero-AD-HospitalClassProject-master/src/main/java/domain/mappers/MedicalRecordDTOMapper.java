@@ -13,8 +13,7 @@ public class MedicalRecordDTOMapper {
                 medicalRecordDTO.getIdPatient(),
                 medicalRecordDTO.getIdDoctor(),
                 medicalRecordDTO.getDescription(),
-                LocalDate.parse(medicalRecordDTO.getDate()),
-                null
+                LocalDate.parse(medicalRecordDTO.getDate())
         );
     }
 
@@ -24,8 +23,7 @@ public class MedicalRecordDTOMapper {
                 medicalRecords.getDiagnosis(),
                 medicalRecords.getAddmisionDate().toString(),
                 medicalRecords.getPatientId(),
-                medicalRecords.getDoctorId(),
-                null
+                medicalRecords.getDoctorId()
         );
     }
 }

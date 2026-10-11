@@ -30,7 +30,7 @@ public class JDBCCredentialRepository implements CredentialRepository {
         }
 
         try (Connection con = db.getConnection();
-             PreparedStatement statement = con.prepareStatement(SQLQueries.SELECT_CREDENTIAL_BY_USERNAME)) {
+             PreparedStatement statement = con.prepareStatement(SQLQueries.GET_USER_BY_USERNAME)) {
             statement.setString(1, username);
             try (ResultSet rs = statement.executeQuery()) {
                 return credentialMapper.mapCredential(rs);

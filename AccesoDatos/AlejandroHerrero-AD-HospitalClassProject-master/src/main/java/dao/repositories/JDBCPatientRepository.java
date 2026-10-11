@@ -4,8 +4,10 @@ import common.Constants;
 import dao.interfaces.PatientRepository;
 import dao.mapper.patientQueryMapper;
 import dao.model.Patient;
+import dao.model.UserLogin;
 import dao.repositories.common.SQLQueries;
 import domain.exceptions.DatabaseError;
+import domain.exceptions.DuplicatedUsernameException;
 import domain.exceptions.ForeignKeyException;
 import jakarta.inject.Inject;
 
@@ -31,7 +33,7 @@ public class JDBCPatientRepository implements PatientRepository {
         try (Connection con = db.getConnection();
              Statement statement = con.createStatement()) {
 
-            ResultSet rs = statement.executeQuery(SQLQueries.SELECT_AllPatients_QUERY);
+            ResultSet rs = statement.executeQuery(SQLQueries.GET_ALL_PATIENTS);
             patients = patientMapper.mapPatient(rs);
         } catch (SQLException ex) {
             Logger.getLogger(JDBCPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
@@ -40,26 +42,52 @@ public class JDBCPatientRepository implements PatientRepository {
         return patients;
     }
 
-    @Override
-    public int add(Patient patient) {
-        try (Connection con = db.getConnection();
-             PreparedStatement statement = con.prepareStatement(
-                     SQLQueries.INSERT_PATIENT_WITH_AUTOINCREMENTAL_ID,
-                     Statement.RETURN_GENERATED_KEYS)) {
-            statement.setString(1, patient.getName());
-            setDate(statement, 2, patient.getBirthDate());
-            statement.setString(3, patient.getPhone());
-            statement.executeUpdate();
 
-            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    return generatedKeys.getInt(1);
+    @Override
+    public int add(Patient patient, UserLogin userLogin) {
+        try (Connection connection = db.getConnection()) {
+            try {
+                connection.setAutoCommit(false);
+
+                int patientId;
+                try (PreparedStatement patientStatement = connection.prepareStatement(
+                        SQLQueries.ADD_PATIENT, Statement.RETURN_GENERATED_KEYS)) {
+                    patientStatement.setString(1, patient.getName());
+                    setDate(patientStatement, 2, patient.getBirthDate());
+                    patientStatement.setString(3, patient.getPhone());
+                    patientStatement.executeUpdate();
+
+                    try (ResultSet generatedKeys = patientStatement.getGeneratedKeys()) {
+                        if (!generatedKeys.next()) {
+                            throw new DatabaseError(Constants.DATABASE_ERROR);
+                        }
+                        patientId = generatedKeys.getInt(1);
+                    }
                 }
+
+                try (PreparedStatement credentialStatement = connection.prepareStatement(
+                        SQLQueries.INSERT_CREDENTIAL)) {
+                    credentialStatement.setString(1, userLogin.getUsername());
+                    credentialStatement.setString(2, userLogin.getPassword());
+                    credentialStatement.setInt(3, patientId);
+                    credentialStatement.executeUpdate();
+                }
+
+                connection.commit();
+                return patientId;
+            } catch (SQLIntegrityConstraintViolationException ex) {
+                connection.rollback();
+                throw new DuplicatedUsernameException(Constants.DUPLICATED_USERNAME);
+            } catch (SQLException ex) {
+                connection.rollback();
+                throw new DatabaseError(Constants.DATABASE_ERROR);
+            } catch (RuntimeException ex) {
+                connection.rollback();
+                throw ex;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(JDBCPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DatabaseError(Constants.DATABASE_ERROR);
         }
-        return 0;
     }
 
     @Override
@@ -82,38 +110,35 @@ public class JDBCPatientRepository implements PatientRepository {
             try {
                 connection.setAutoCommit(false);
                 if (confirm) {
-                    try (PreparedStatement preparedStatement1 = connection.prepareStatement(SQLQueries.DELETE_MEDICATIONS_PATIENT);
-                         PreparedStatement preparedStatement2 = connection.prepareStatement(SQLQueries.DELETE_MEDRECORDS_PATIENT);
+                    try (PreparedStatement preparedStatement2 = connection.prepareStatement(SQLQueries.DELETE_MEDRECORDS_PATIENT);
                          PreparedStatement preparedStatement3 = connection.prepareStatement(SQLQueries.DELETE_APPOINTMENTS_PATIENT);
                          PreparedStatement preparedStatement4 = connection.prepareStatement(SQLQueries.DELETE_PAYMENTS_PATIENT)) {
 
-                        preparedStatement1.setInt(1, idDelete);
                         preparedStatement2.setInt(1, idDelete);
                         preparedStatement3.setInt(1, idDelete);
                         preparedStatement4.setInt(1, idDelete);
 
-                        preparedStatement1.executeUpdate();
                         preparedStatement2.executeUpdate();
                         preparedStatement3.executeUpdate();
                         preparedStatement4.executeUpdate();
                     }
 
-                    try (PreparedStatement preparedStatement5 = connection.prepareStatement(SQLQueries.DELETE_CREDENTIALS_PATIENT);
-                         PreparedStatement preparedStatement6 = connection.prepareStatement(SQLQueries.DELETE_PATIENT)) {
-                        preparedStatement5.setInt(1, idDelete);
-                        preparedStatement6.setInt(1, idDelete);
-
-                        preparedStatement5.executeUpdate();
-
-                        int affectedRows = preparedStatement6.executeUpdate();
-
-                        if (affectedRows == 0) {
-                            System.out.println("Error when deleting patient: " + idDelete);
-                        }
-                    }
-                    connection.commit();
-
                 }
+
+                try (PreparedStatement preparedStatement5 = connection.prepareStatement(SQLQueries.DELETE_CREDENTIALS_PATIENT);
+                     PreparedStatement preparedStatement6 = connection.prepareStatement(SQLQueries.DELETE_PATIENT)) {
+                    preparedStatement5.setInt(1, idDelete);
+                    preparedStatement6.setInt(1, idDelete);
+
+                    preparedStatement5.executeUpdate();
+                    int affectedRows = preparedStatement6.executeUpdate();
+                    if (affectedRows == 0) {
+                        connection.rollback();
+                        throw new DatabaseError(Constants.PATIENT_DELETE_ERROR + idDelete);
+                    }
+                }
+                connection.commit();
+
             } catch (SQLIntegrityConstraintViolationException e){
 
                 connection.rollback();
@@ -134,7 +159,7 @@ public class JDBCPatientRepository implements PatientRepository {
     private void setDate(PreparedStatement statement, int index, java.time.LocalDate date)
             throws SQLException {
         if (date == null) {
-            throw new IllegalArgumentException("La fecha de nacimiento del paciente es obligatoria");
+            throw new IllegalArgumentException(Constants.REQUIRED_BIRTH_DATE);
         }
         statement.setDate(index, Date.valueOf(date));
     }

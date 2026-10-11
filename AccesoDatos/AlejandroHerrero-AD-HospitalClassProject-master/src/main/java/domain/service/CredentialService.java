@@ -17,7 +17,8 @@ public class CredentialService {
         if (credential == null
                 || credential.getUsername() == null
                 || credential.getUsername().isBlank()
-                || credential.getPassword() == null) {
+                || credential.getPassword() == null
+                || credential.getPassword().isBlank()) {
             return false;
         }
 

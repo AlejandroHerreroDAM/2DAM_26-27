@@ -1,13 +1,15 @@
 package ui;
 
 import domain.exceptions.AppException;
+import domain.exceptions.DuplicatedUsernameException;
 import domain.model.CredentialDTO;
 import domain.model.DoctorDTO;
+import domain.model.MedicalRecordDTO;
 import domain.model.PatientDTO;
+import common.Constants;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -19,36 +21,18 @@ public class Main {
             MedicalRecordUI medicalRecordUI = container.select(MedicalRecordUI.class).get();
             CredentialUI credentialUI = container.select(CredentialUI.class).get();
 
-            System.out.println("""
-                    Hospital CRUD application
-                    Please login to continue
-                    Username: """);
-            System.out.println("Password: ");
+            System.out.println(Constants.APP_TITLE);
+            System.out.println(Constants.LOGIN_PROMPT);
 
             Scanner sc = new Scanner(System.in);
-            String username = sc.nextLine();
-            String password = sc.nextLine();
-            if (credentialUI.login(new CredentialDTO(username, password))) {
-                System.out.println("Login successful!");
+            if (credentialUI.login(credentialUI.readCredential())) {
+                System.out.println(Constants.LOGIN_SUCCESS);
                 int option;
 
                 do {
-                    System.out.println("""
-                            
-                            Hospital CRUD Application
-                            1. Get all Patients
-                            2. Add Patient
-                            3. Update Patient
-                            4. Delete Patient
-                            5. Get all Doctors
-                            6. Get all Medical Records by patient
-                            7. Add Medical Record
-                            8. Update Medical Record
-                            9. Delete Medical Record
-                            10. Exit
-                            """);
+                    System.out.println(Constants.MENU);
 
-                    System.out.print("Enter your choice: ");
+                    System.out.print(Constants.ENTER_CHOICE);
                     option = sc.nextInt();
                     sc.nextLine();
 
@@ -60,25 +44,25 @@ public class Main {
                             break;
 
                         case 2:
-                            PatientDTO newPatient = readPatient(sc, 0);
-                            int newId = patientui.addPatient(newPatient);
-                            System.out.println("Patient added with id: " + newId);
+                            PatientDTO newPatient = patientui.readPatient(0);
+                            CredentialDTO newCredential = credentialUI.readCredential();
+                            int newId = patientui.addPatient(newPatient, newCredential);
+                            System.out.println(Constants.PATIENT_ADDED + newId);
                             break;
 
                         case 3:
-                            System.out.print("Patient id: ");
+                            System.out.print(Constants.PATIENT_ID);
                             int updateId = sc.nextInt();
                             sc.nextLine();
-                            patientui.updatePatient(readPatient(sc, updateId));
-                            System.out.println("Patient updated.");
+                            patientui.updatePatient(patientui.readPatient(updateId));
+                            System.out.println(Constants.PATIENT_UPDATED);
                             break;
 
                         case 4:
-                            System.out.print("Patient id: ");
+                            System.out.print(Constants.PATIENT_ID);
                             int deleteId = sc.nextInt();
                             sc.nextLine();
-                            patientui.deletePatient(deleteId);
-                            System.out.println("Patient deleted.");
+                            patientui.deletePatient(deleteId, false);
                             break;
 
                         case 5:
@@ -88,51 +72,56 @@ public class Main {
                             break;
 
                         case 6:
+                            System.out.print(Constants.PATIENT_ID);
                             int patientId = sc.nextInt();
                             sc.nextLine();
-                            medicalRecordUI.getAllByIdMedicalRecords(patientId);
+                            for (MedicalRecordDTO medicalRecord : medicalRecordUI.getAllByIdMedicalRecords(patientId)) {
+                                medicalRecordUI.printMedicalRecord(medicalRecord);
+                            }
                             break;
 
                         case 7:
-                            medicalRecordUI.addMedicalRecord(null);
+                            int newRecordId = medicalRecordUI.addMedicalRecord(
+                                    medicalRecordUI.readMedicalRecord(0));
+                            System.out.println(Constants.MEDICAL_RECORD_ADDED + newRecordId);
                             break;
 
                         case 8:
-                            medicalRecordUI.updateMedicalRecord(null);
+                            System.out.print(Constants.MEDICAL_RECORD_ID);
+                            int updateRecordId = sc.nextInt();
+                            sc.nextLine();
+                            medicalRecordUI.updateMedicalRecord(
+                                    medicalRecordUI.readMedicalRecord(updateRecordId));
+                            System.out.println(Constants.MEDICAL_RECORD_UPDATED);
                             break;
 
                         case 9:
-                            medicalRecordUI.deleteMedicalRecord(0);
+                            System.out.print(Constants.MEDICAL_RECORD_ID);
+                            int deleteRecordId = sc.nextInt();
+                            sc.nextLine();
+                            medicalRecordUI.deleteMedicalRecord(deleteRecordId);
+                            System.out.println(Constants.MEDICAL_RECORD_DELETED);
                             break;
 
                         case 10:
-                            System.out.println("Exiting...");
+                            System.out.println(Constants.EXITING);
                             break;
 
                         default:
-                            System.out.println("Invalid option!");
+                            System.out.println(Constants.INVALID_OPTION);
                             break;
                     }
 
                 } while (option != 10);
 
             } else {
-                System.out.println("Login failed!");
+                System.out.println(Constants.LOGIN_FAILED);
             }
+        } catch (DuplicatedUsernameException e) {
+            System.out.println(e.getMessage());
         } catch (AppException e) {
-            
+            System.out.println(e.getMessage());
         }
-    }
-
-    private static PatientDTO readPatient(Scanner sc, int id) {
-        System.out.print("Name: ");
-        String name = sc.nextLine();
-        System.out.print("Date of birth (yyyy-MM-dd): ");
-        String date = sc.nextLine();
-        LocalDate birthDate = LocalDate.parse(date);
-        System.out.print("Phone: ");
-        String phone = sc.nextLine();
-        return new PatientDTO(id, name, birthDate, phone, 0, null, null);
     }
 
 }

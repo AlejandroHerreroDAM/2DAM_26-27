@@ -14,11 +14,7 @@ public class credentialQueryMapper {
         try {
             if (rs.next()) {
                 credential = new UserLogin();
-                credential.setId(rs.getInt("user_id"));
-                credential.setUsername(rs.getString("username"));
                 credential.setPassword(rs.getString("password"));
-                credential.setPatientId(rs.getInt("patient_id"));
-                credential.setDoctorId(rs.getInt("doctor_id"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(credentialQueryMapper.class.getName()).log(Level.SEVERE, null, ex);

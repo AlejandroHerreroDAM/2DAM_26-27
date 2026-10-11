@@ -2,6 +2,6 @@ package domain.exceptions;
 
 public class ForeignKeyException extends RuntimeException {
     public ForeignKeyException() {
-        super(message);
+        super("The record is referenced by another entity");
     }
 }

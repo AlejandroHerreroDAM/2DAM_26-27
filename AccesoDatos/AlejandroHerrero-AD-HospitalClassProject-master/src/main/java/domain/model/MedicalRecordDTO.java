@@ -1,9 +1,6 @@
 package domain.model;
 
-import dao.model.PrescribedMed;
 import lombok.*;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +12,5 @@ public class MedicalRecordDTO {
         private String date;
         private int idPatient;
         private int idDoctor;
-        private List<PrescribedMed> medications;
 
 }

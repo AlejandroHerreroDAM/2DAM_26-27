@@ -28,7 +28,7 @@ public class JDBCDoctorRepository implements DoctorRepository {
     public List<Doctor> getAll() {
         try (Connection con = db.getConnection();
              Statement statement = con.createStatement();
-             ResultSet rs = statement.executeQuery(SQLQueries.SELECT_ALL_DOCTORS_QUERY)) {
+             ResultSet rs = statement.executeQuery(SQLQueries.GET_ALL_DOCTORS)) {
             return doctorMapper.mapDoctor(rs);
         } catch (SQLException ex) {
             Logger.getLogger(JDBCDoctorRepository.class.getName()).log(Level.SEVERE, null, ex);

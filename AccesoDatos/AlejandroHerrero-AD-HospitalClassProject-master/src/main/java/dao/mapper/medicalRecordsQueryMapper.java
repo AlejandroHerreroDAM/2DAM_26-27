@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class medicalRecordsQueryMapper {
-    private List<MedicalRecords> mapMedicalRecords(ResultSet rs){
+    public List<MedicalRecords> mapMedicalRecords(ResultSet rs){
 
         List<MedicalRecords> medicalRecords = new ArrayList<>();
         try{
