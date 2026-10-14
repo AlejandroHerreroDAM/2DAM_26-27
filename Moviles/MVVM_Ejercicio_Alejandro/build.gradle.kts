@@ -1,4 +1,5 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// Archivo de configuración raíz con opciones comunes a los módulos.
+// Declara el plugin de aplicación Android sin aplicarlo todavía a este proyecto raíz.
 plugins {
     alias(libs.plugins.android.application) apply false
 }
