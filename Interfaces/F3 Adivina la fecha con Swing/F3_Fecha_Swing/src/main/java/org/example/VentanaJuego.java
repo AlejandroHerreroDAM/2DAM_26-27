@@ -4,10 +4,21 @@ import javax.swing.*;
 import java.awt.*;
 
 public class VentanaJuego extends JFrame {
-    private final LogicaJuego logica;
-    private final JTextField txtDia, txtMes, txtAno;
-    private final JLabel lblFeedDia, lblFeedMes, lblFeedAno;
-    private final JLabel lblTextoDia, lblTextoMes, lblTextoAno;
+
+    private LogicaJuego logica;
+
+    private final JTextField txtDia;
+    private final JTextField txtMes;
+    private final JTextField txtAno;
+
+    private final JLabel lblFeedDia;
+    private final JLabel lblFeedMes;
+    private final JLabel lblFeedAno;
+
+    private final JLabel lblTextoDia;
+    private final JLabel lblTextoMes;
+    private final JLabel lblTextoAno;
+
     private final JLabel lblIntentos;
 
     public VentanaJuego() {
@@ -90,10 +101,19 @@ public class VentanaJuego extends JFrame {
             aplicarFeedback(lblFeedAno, lblTextoAno, compA);
 
             if (compD == 0 && compM == 0 && compA == 0) {
-                JOptionPane.showMessageDialog(this,
+                Object[] opciones = {"Jugar otra vez"};
+                int eleccion = JOptionPane.showOptionDialog(this,
                         "¡Felicidades! Has adivinado la fecha en " + logica.getIntentos() + " intentos.",
                         "¡Has ganado!",
-                        JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,
+                        null,
+                        opciones,
+                        opciones[0]);
+
+                if (eleccion == 0) {
+                    reiniciarJuego();
+                }
             }
 
         } catch (NumberFormatException ex) {
@@ -118,5 +138,22 @@ public class VentanaJuego extends JFrame {
             lblTexto.setText("Te has quedado corto");
             lblTexto.setForeground(Color.BLUE);
         }
+    }
+
+    private void reiniciarJuego() {
+        logica = new LogicaJuego();
+
+        txtDia.setText("");
+        txtMes.setText("");
+        txtAno.setText("");
+        lblIntentos.setText("Intentos: 0");
+
+        lblFeedDia.setBackground(Color.LIGHT_GRAY);
+        lblFeedMes.setBackground(Color.LIGHT_GRAY);
+        lblFeedAno.setBackground(Color.LIGHT_GRAY);
+
+        lblTextoDia.setText("");
+        lblTextoMes.setText("");
+        lblTextoAno.setText("");
     }
 }
