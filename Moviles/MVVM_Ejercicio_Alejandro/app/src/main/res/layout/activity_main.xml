@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Contenedor raíz que posiciona sus elementos mediante restricciones. -->
-<!-- Sus namespaces permiten usar atributos de Android, ConstraintLayout y herramientas del editor. -->
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,9 +9,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
-    <!-- El identificador permite acceder a esta vista desde View Binding. -->
-    <!-- wrap_content ajusta su tamaño al texto y las restricciones la colocan arriba y centrada. -->
-    <!-- Su texto inicial se obtiene de strings.xml. -->
+
+
+
     <TextView
         android:id="@+id/ListaCoches"
         android:layout_width="wrap_content"
@@ -22,8 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Esta vista muestra inicialmente un aviso y luego la marca del coche aleatorio. -->
-    <!-- Sus restricciones la centran horizontalmente en la mitad inferior de la pantalla. -->
+
+
     <TextView
         android:id="@+id/CocheRandom"
         android:layout_width="wrap_content"
@@ -34,8 +34,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/middleHorizontal" />
 
-    <!-- El botón se identifica desde View Binding y permite solicitar un coche aleatorio. -->
-    <!-- Sus restricciones lo colocan centrado justo encima de la guía horizontal. -->
+
+
     <Button
         android:id="@+id/botonCocheRandom"
         android:layout_width="wrap_content"
@@ -47,8 +47,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/middleHorizontal" />
 
-    <!-- Guía invisible que sirve como referencia para dividir la pantalla por la mitad. -->
-    <!-- Al ser horizontal y tener guide_percent 0.5, queda al 50 % de la altura. -->
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/middleHorizontal"
         android:layout_width="0dp"

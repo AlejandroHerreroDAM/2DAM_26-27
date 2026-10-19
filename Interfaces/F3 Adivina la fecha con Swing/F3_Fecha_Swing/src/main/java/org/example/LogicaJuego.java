@@ -1,5 +1,6 @@
 package org.example;
 
+<<<<<<< HEAD
 import org.w3c.dom.ls.LSOutput;
 
 import java.time.LocalDate;
@@ -31,4 +32,7 @@ public class LogicaJuego {
 
 
 
+=======
+public class LogicaJuego {
+>>>>>>> 453bccb287bc241b538d6c78851e12dcfcc807a8
 }

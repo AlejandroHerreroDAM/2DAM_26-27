@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Archivo que describe la configuración principal de la aplicación Android. -->
-<!-- Los namespaces proporcionan atributos del sistema y opciones de las herramientas de compilación. -->
+
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Agrupa la configuración global, los iconos, el nombre, el tema y las copias de seguridad. -->
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,18 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVM_Ejercicio_Alejandro">
 
-        <!-- Declara la actividad principal y ajusta el contenido cuando aparece el teclado. -->
+
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
 
-            <!-- Este filtro convierte la actividad en el punto de entrada del lanzador. -->
+
             <intent-filter>
-                <!-- Indica que la actividad es principal. -->
+
                 <action android:name="android.intent.action.MAIN" />
 
-                <!-- Hace que la actividad aparezca como lanzadora de la aplicación. -->
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

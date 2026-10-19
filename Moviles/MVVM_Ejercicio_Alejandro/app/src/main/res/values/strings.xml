@@ -1,7 +1,7 @@
-<!-- Contenedor de cadenas traducibles de la aplicación. -->
+
 <resources>
-    <!-- Nombre que aparece para la aplicación. -->
+
     <string name="app_name">MVVM_Ejercicio_Alejandro</string>
-    <!-- Título inicial de la lista de coches. -->
+
     <string name="lista_de_coches">Lista de coches</string>
 </resources>
