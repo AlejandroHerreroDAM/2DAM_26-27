@@ -10,6 +10,7 @@ import org.hospitalspringclient.dao.repositories.common.SQLQueries;
 import org.hospitalspringclient.domain.exceptions.DatabaseError;
 import org.hospitalspringclient.domain.exceptions.DuplicatedUsernameException;
 import org.hospitalspringclient.domain.exceptions.ForeignKeyException;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -19,28 +20,30 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Repository
-public class JDBCPatientRepository implements PatientRepository {
+public class SpringPatientRepository implements PatientRepository {
 
     private final DBConnection db;
     private final patientQueryMapper patientMapper;
+    private final JdbcClient jdbcClient;
 
-    public JDBCPatientRepository(DBConnection db, patientQueryMapper mapPatient) {
+    public SpringPatientRepository(DBConnection db, patientQueryMapper mapPatient, JdbcClient jdbcClient) {
         this.db = db;
         this.patientMapper = mapPatient;
+        this.jdbcClient = jdbcClient;
     }
 
     public List<Patient> getAll() {
-        List<Patient> patients = new ArrayList<>();
-        try (Connection con = db.getConnection();
-             Statement statement = con.createStatement()) {
-
-            ResultSet rs = statement.executeQuery(SQLQueries.GET_ALL_PATIENTS);
-            patients = patientMapper.mapPatient(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(JDBCPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-        return patients;
+//        List<Patient> patients = new ArrayList<>();
+//        try (Connection con = db.getConnection();
+//             Statement statement = con.createStatement()) {
+//
+//            ResultSet rs = statement.executeQuery(SQLQueries.GET_ALL_PATIENTS);
+//            patients = patientMapper.mapPatient(rs);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SpringPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
+//
+//        }
+        return jdbcClient.sql(SQLQueries.GET_ALL_PATIENTS).query(patientMapper).list;
     }
 
 
@@ -101,7 +104,7 @@ public class JDBCPatientRepository implements PatientRepository {
             statement.setInt(4, patient.getId());
             statement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(JDBCPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SpringPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -152,7 +155,7 @@ public class JDBCPatientRepository implements PatientRepository {
                 throw new DatabaseError(Constants.DATABASE_ERROR);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(JDBCPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SpringPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
             throw new DatabaseError(Constants.DATABASE_ERROR);
         }
     }

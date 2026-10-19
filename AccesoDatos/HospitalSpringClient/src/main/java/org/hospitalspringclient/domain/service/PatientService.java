@@ -4,7 +4,7 @@ import org.hospitalspringclient.common.Constants;
 import org.hospitalspringclient.dao.interfaces.PatientRepository;
 import org.hospitalspringclient.dao.model.Patient;
 import org.hospitalspringclient.dao.model.UserLogin;
-import org.hospitalspringclient.dao.repositories.JDBCPatientRepository;
+import org.hospitalspringclient.dao.repositories.SpringPatientRepository;
 import org.hospitalspringclient.domain.mappers.PatientDTOMapper;
 import org.hospitalspringclient.domain.model.CredentialDTO;
 import org.hospitalspringclient.domain.model.PatientDTO;
@@ -19,7 +19,7 @@ public class PatientService {
     private final PatientDTOMapper patientMapper;
 
 
-    public PatientService(JDBCPatientRepository patientRepository, PatientDTOMapper patientMapper) {
+    public PatientService(SpringPatientRepository patientRepository, PatientDTOMapper patientMapper) {
         this.patientRepository = patientRepository;
         this.patientMapper = patientMapper;
     }
