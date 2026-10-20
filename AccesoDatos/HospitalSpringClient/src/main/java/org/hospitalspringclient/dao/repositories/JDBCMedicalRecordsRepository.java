@@ -6,6 +6,8 @@ import org.hospitalspringclient.dao.mapper.medicalRecordsQueryMapper;
 import org.hospitalspringclient.dao.model.MedicalRecords;
 import org.hospitalspringclient.dao.repositories.common.SQLQueries;
 import org.springframework.jdbc.core.simple.JdbcClient;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -44,20 +46,25 @@ public class JDBCMedicalRecordsRepository implements MedicalRecordRepository {
 
     @Override
     public int add(MedicalRecords medicalRecords) {
-        try (Connection con = db.getConnection();
-             java.sql.PreparedStatement statement = con.prepareStatement(
-                     SQLQueries.ADD_MEDRECORD, Statement.RETURN_GENERATED_KEYS)) {
-            setRecordParameters(statement, medicalRecords, false);
-            statement.executeUpdate();
-            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    return generatedKeys.getInt(1);
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(JDBCMedicalRecordsRepository.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcClient.sql(SQLQueries.ADD_MEDRECORD)
+
+
+//        try (Connection con = db.getConnection();
+//             java.sql.PreparedStatement statement = con.prepareStatement(
+//                     SQLQueries.ADD_MEDRECORD, Statement.RETURN_GENERATED_KEYS)) {
+//            setRecordParameters(statement, medicalRecords, false);
+//            statement.executeUpdate();
+//            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+//                if (generatedKeys.next()) {
+//                    return generatedKeys.getInt(1);
+//                }
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(JDBCMedicalRecordsRepository.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return 0;
     }
 
     @Override
