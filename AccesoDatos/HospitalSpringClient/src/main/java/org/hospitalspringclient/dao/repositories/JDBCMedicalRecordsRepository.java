@@ -5,6 +5,7 @@ import org.hospitalspringclient.dao.interfaces.MedicalRecordRepository;
 import org.hospitalspringclient.dao.mapper.medicalRecordsQueryMapper;
 import org.hospitalspringclient.dao.model.MedicalRecords;
 import org.hospitalspringclient.dao.repositories.common.SQLQueries;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -16,12 +17,13 @@ import java.util.logging.Logger;
 @Repository
 public class JDBCMedicalRecordsRepository implements MedicalRecordRepository {
 
-    private final DBConnection db;
-    private final medicalRecordsQueryMapper medicalRecordMapper;
 
-    public JDBCMedicalRecordsRepository(DBConnection db, medicalRecordsQueryMapper medicalRecordMapper) {
-        this.db = db;
+    private final medicalRecordsQueryMapper medicalRecordMapper;
+    private final JdbcClient jdbcClient;
+
+    public JDBCMedicalRecordsRepository(DBConnection db, medicalRecordsQueryMapper medicalRecordMapper, JdbcClient jdbcClient) {
         this.medicalRecordMapper = medicalRecordMapper;
+        this.jdbcClient = jdbcClient;
     }
 
 
@@ -71,20 +73,23 @@ public class JDBCMedicalRecordsRepository implements MedicalRecordRepository {
 
     @Override
     public void delete(int idDelete) {
-        try (Connection con = db.getConnection()) {
-            con.setAutoCommit(false);
-            try (java.sql.PreparedStatement record =
-                         con.prepareStatement(SQLQueries.DELETE_MEDRECORD)) {
-                record.setInt(1, idDelete);
-                record.executeUpdate();
-                con.commit();
-            } catch (SQLException ex) {
-                con.rollback();
-                throw ex;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(JDBCMedicalRecordsRepository.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        jdbcClient.sql(SQLQueries.DELETE_MEDRECORD).param("id", idDelete);
+
+//        try (Connection con = db.getConnection()) {
+//            con.setAutoCommit(false);
+//            try (java.sql.PreparedStatement record =
+//                         con.prepareStatement(SQLQueries.DELETE_MEDRECORD)) {
+//                record.setInt(1, idDelete);
+//                record.executeUpdate();
+//                con.commit();
+//            } catch (SQLException ex) {
+//                con.rollback();
+//                throw ex;
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(JDBCMedicalRecordsRepository.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     private void setRecordParameters(java.sql.PreparedStatement statement,

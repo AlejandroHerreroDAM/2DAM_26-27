@@ -2,12 +2,14 @@ package org.hospitalspringclient.dao.mapper;
 
 
 import org.hospitalspringclient.dao.model.UserLogin;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Component
 public class credentialQueryMapper {
 
     public UserLogin mapCredential(ResultSet rs) {

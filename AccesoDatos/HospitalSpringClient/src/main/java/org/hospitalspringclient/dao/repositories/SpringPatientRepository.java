@@ -22,12 +22,10 @@ import java.util.logging.Logger;
 @Repository
 public class SpringPatientRepository implements PatientRepository {
 
-    private final DBConnection db;
     private final patientQueryMapper patientMapper;
     private final JdbcClient jdbcClient;
 
-    public SpringPatientRepository(DBConnection db, patientQueryMapper mapPatient, JdbcClient jdbcClient) {
-        this.db = db;
+    public SpringPatientRepository (patientQueryMapper mapPatient, JdbcClient jdbcClient) {
         this.patientMapper = mapPatient;
         this.jdbcClient = jdbcClient;
     }
@@ -43,7 +41,7 @@ public class SpringPatientRepository implements PatientRepository {
 //            Logger.getLogger(SpringPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
 //
 //        }
-        return jdbcClient.sql(SQLQueries.GET_ALL_PATIENTS).query(patientMapper).list;
+        return jdbcClient.sql(SQLQueries.GET_ALL_PATIENTS).query(patientMapper).list();
     }
 
 
@@ -96,16 +94,19 @@ public class SpringPatientRepository implements PatientRepository {
 
     @Override
     public void update(Patient patient) {
-        try (Connection con = db.getConnection();
-             PreparedStatement statement = con.prepareStatement(SQLQueries.UPDATE_PATIENT)) {
-            statement.setString(1, patient.getName());
-            setDate(statement, 2, patient.getBirthDate());
-            statement.setString(3, patient.getPhone());
-            statement.setInt(4, patient.getId());
-            statement.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(SpringPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        jdbcClient.sql(SQLQueries.UPDATE_PATIENT).param("name", patient.getName()).param("date_of_birth", patient.getBirthDate()).param("phone", patient.getPhone()).param("patient_id", patient.getId()).update();
+
+
+//        try (Connection con = db.getConnection();
+//             PreparedStatement statement = con.prepareStatement(SQLQueries.UPDATE_PATIENT)) {
+//            statement.setString(1, patient.getName());
+//            setDate(statement, 2, patient.getBirthDate());
+//            statement.setString(3, patient.getPhone());
+//            statement.setInt(4, patient.getId());
+//            statement.executeUpdate();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SpringPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     @Override
