@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="componenteFecha">
+    <output-path>$PROJECT_DIR$/out/artifacts/componenteFecha</output-path>
+    <root id="archive" name="componenteFecha.jar">
+      <element id="module-output" name="F4.1_ComponenteReutilizable" />
+    </root>
+  </artifact>
+</component>
