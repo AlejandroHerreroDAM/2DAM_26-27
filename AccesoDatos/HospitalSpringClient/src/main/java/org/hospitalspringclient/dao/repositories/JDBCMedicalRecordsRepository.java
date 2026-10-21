@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,10 +23,12 @@ public class JDBCMedicalRecordsRepository implements MedicalRecordRepository {
 
     private final medicalRecordsQueryMapper medicalRecordMapper;
     private final JdbcClient jdbcClient;
+    private final PrescribedMedRepository prescribedMedRepository;
 
-    public JDBCMedicalRecordsRepository(DBConnection db, medicalRecordsQueryMapper medicalRecordMapper, JdbcClient jdbcClient) {
+    public JDBCMedicalRecordsRepository(DBConnection db, medicalRecordsQueryMapper medicalRecordMapper, JdbcClient jdbcClient, PrescribedMedRepository prescribedMedRepository) {
         this.medicalRecordMapper = medicalRecordMapper;
         this.jdbcClient = jdbcClient;
+        this.prescribedMedRepository = prescribedMedRepository;
     }
 
 
@@ -79,8 +82,9 @@ public class JDBCMedicalRecordsRepository implements MedicalRecordRepository {
     }
 
     @Override
+    @Transactional
     public void delete(int idDelete) {
-
+        prescribedMed.deleteByMedRecord(idMedRecord);
         jdbcClient.sql(SQLQueries.DELETE_MEDRECORD).param("id", idDelete);
 
 //        try (Connection con = db.getConnection()) {

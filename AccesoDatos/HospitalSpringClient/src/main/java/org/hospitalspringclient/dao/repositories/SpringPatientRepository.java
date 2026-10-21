@@ -10,8 +10,10 @@ import org.hospitalspringclient.dao.repositories.common.SQLQueries;
 import org.hospitalspringclient.domain.exceptions.DatabaseError;
 import org.hospitalspringclient.domain.exceptions.DuplicatedUsernameException;
 import org.hospitalspringclient.domain.exceptions.ForeignKeyException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public class SpringPatientRepository implements PatientRepository {
     private final patientQueryMapper patientMapper;
     private final JdbcClient jdbcClient;
 
-    public SpringPatientRepository (patientQueryMapper mapPatient, JdbcClient jdbcClient) {
+    public SpringPatientRepository(patientQueryMapper mapPatient, JdbcClient jdbcClient) {
         this.patientMapper = mapPatient;
         this.jdbcClient = jdbcClient;
     }
@@ -110,64 +112,32 @@ public class SpringPatientRepository implements PatientRepository {
     }
 
     @Override
+    @Transactional
     public void delete(int idDelete, boolean confirm) {
-        try (Connection connection = db.getConnection()) {
-            try {
-                connection.setAutoCommit(false);
-                if (confirm) {
-                    try (PreparedStatement preparedStatement2 = connection.prepareStatement(SQLQueries.DELETE_MEDRECORDS_PATIENT);
-                         PreparedStatement preparedStatement3 = connection.prepareStatement(SQLQueries.DELETE_APPOINTMENTS_PATIENT);
-                         PreparedStatement preparedStatement4 = connection.prepareStatement(SQLQueries.DELETE_PAYMENTS_PATIENT)) {
 
-                        preparedStatement2.setInt(1, idDelete);
-                        preparedStatement3.setInt(1, idDelete);
-                        preparedStatement4.setInt(1, idDelete);
+        if (confirm) {
+            medRecordRepository.deleteByPatient(idDelete);
+        }
 
-                        preparedStatement2.executeUpdate();
-                        preparedStatement3.executeUpdate();
-                        preparedStatement4.executeUpdate();
-                    }
-
-                }
-
-                try (PreparedStatement preparedStatement5 = connection.prepareStatement(SQLQueries.DELETE_CREDENTIALS_PATIENT);
-                     PreparedStatement preparedStatement6 = connection.prepareStatement(SQLQueries.DELETE_PATIENT)) {
-                    preparedStatement5.setInt(1, idDelete);
-                    preparedStatement6.setInt(1, idDelete);
-
-                    preparedStatement5.executeUpdate();
-                    int affectedRows = preparedStatement6.executeUpdate();
-                    if (affectedRows == 0) {
-                        connection.rollback();
-                        throw new DatabaseError(Constants.PATIENT_DELETE_ERROR + idDelete);
-                    }
-                }
-                connection.commit();
-
-            } catch (SQLIntegrityConstraintViolationException e){
-
-                connection.rollback();
-                e.printStackTrace(System.err);
-                throw new ForeignKeyException();
-            } catch (SQLException e){
-
-                connection.rollback();
-                e.printStackTrace(System.err);
-                throw new DatabaseError(Constants.DATABASE_ERROR);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(SpringPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
-            throw new DatabaseError(Constants.DATABASE_ERROR);
+        paymentsRepository.deleteByPatient(idDelete);
+        appointmentRepository.deleteByPatient(idDelete);
+        credentialRepository.deleteByPatient(idDelete);
+        try {
+            jdbcClient.sql(SQLQueries.DELETE_PATIENT).param("id", idDelete).update();
+        } catch (DataIntegrityViolationException e) {
+            Logger.getLogger((SpringPatientRepository.class.getName()).log(Level.SEVERE, null, e);
+            throw new ForeignKeyException();
         }
     }
 
-    private void setDate(PreparedStatement statement, int index, java.time.LocalDate date)
+    private void setDate(PreparedStatement statement, int index, java.time.LocalDate date) {
             throws SQLException {
-        if (date == null) {
-            throw new IllegalArgumentException(Constants.REQUIRED_BIRTH_DATE);
+            if (date == null) {
+                throw new IllegalArgumentException(Constants.REQUIRED_BIRTH_DATE);
+            }
+            statement.setDate(index, Date.valueOf(date));
         }
-        statement.setDate(index, Date.valueOf(date));
+
     }
-
-
 }
+
