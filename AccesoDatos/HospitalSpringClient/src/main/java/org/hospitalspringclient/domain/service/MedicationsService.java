@@ -1,6 +1,6 @@
 package org.hospitalspringclient.domain.service;
 
-import org.hospitalspringclient.dao.repositories.JDBCMedicationsRepository;
+import org.hospitalspringclient.dao.repositories.PrescribedMedRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class MedicationsService {
 
-    JDBCMedicationsRepository  jdbcMedicationsRepository;
+    PrescribedMedRepository jdbcMedicationsRepository;
 
     public List<String> getAllMedications(){
         return jdbcMedicationsRepository.getAll();

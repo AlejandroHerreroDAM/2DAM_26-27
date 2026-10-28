@@ -33,16 +33,7 @@ public class SpringPatientRepository implements PatientRepository {
     }
 
     public List<Patient> getAll() {
-//        List<Patient> patients = new ArrayList<>();
-//        try (Connection con = db.getConnection();
-//             Statement statement = con.createStatement()) {
-//
-//            ResultSet rs = statement.executeQuery(SQLQueries.GET_ALL_PATIENTS);
-//            patients = patientMapper.mapPatient(rs);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(SpringPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
-//
-//        }
+
         return jdbcClient.sql(SQLQueries.GET_ALL_PATIENTS).query(patientMapper).list();
     }
 
@@ -98,17 +89,6 @@ public class SpringPatientRepository implements PatientRepository {
     public void update(Patient patient) {
         jdbcClient.sql(SQLQueries.UPDATE_PATIENT).param("name", patient.getName()).param("date_of_birth", patient.getBirthDate()).param("phone", patient.getPhone()).param("patient_id", patient.getId()).update();
 
-
-//        try (Connection con = db.getConnection();
-//             PreparedStatement statement = con.prepareStatement(SQLQueries.UPDATE_PATIENT)) {
-//            statement.setString(1, patient.getName());
-//            setDate(statement, 2, patient.getBirthDate());
-//            statement.setString(3, patient.getPhone());
-//            statement.setInt(4, patient.getId());
-//            statement.executeUpdate();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(SpringPatientRepository.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     @Override

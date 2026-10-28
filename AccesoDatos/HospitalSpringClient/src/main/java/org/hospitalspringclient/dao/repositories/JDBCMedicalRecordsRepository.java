@@ -53,21 +53,6 @@ public class JDBCMedicalRecordsRepository implements MedicalRecordRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcClient.sql(SQLQueries.ADD_MEDRECORD)
 
-
-//        try (Connection con = db.getConnection();
-//             java.sql.PreparedStatement statement = con.prepareStatement(
-//                     SQLQueries.ADD_MEDRECORD, Statement.RETURN_GENERATED_KEYS)) {
-//            setRecordParameters(statement, medicalRecords, false);
-//            statement.executeUpdate();
-//            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-//                if (generatedKeys.next()) {
-//                    return generatedKeys.getInt(1);
-//                }
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(JDBCMedicalRecordsRepository.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return 0;
     }
 
     @Override
@@ -84,23 +69,8 @@ public class JDBCMedicalRecordsRepository implements MedicalRecordRepository {
     @Override
     @Transactional
     public void delete(int idDelete) {
-        prescribedMed.deleteByMedRecord(idMedRecord);
+        prescribedMed.deleteByMedRecord(idDelete);
         jdbcClient.sql(SQLQueries.DELETE_MEDRECORD).param("id", idDelete);
-
-//        try (Connection con = db.getConnection()) {
-//            con.setAutoCommit(false);
-//            try (java.sql.PreparedStatement record =
-//                         con.prepareStatement(SQLQueries.DELETE_MEDRECORD)) {
-//                record.setInt(1, idDelete);
-//                record.executeUpdate();
-//                con.commit();
-//            } catch (SQLException ex) {
-//                con.rollback();
-//                throw ex;
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(JDBCMedicalRecordsRepository.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     private void setRecordParameters(java.sql.PreparedStatement statement,
