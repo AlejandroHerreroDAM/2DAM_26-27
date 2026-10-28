@@ -1,5 +1,3 @@
-package org.example;
-
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
@@ -10,9 +8,9 @@ public class VentanaJuego extends JFrame {
 
     private LogicaJuego logica;
 
-    private QDate qDateInicio;
-    private QDate qDateFin;
-    private QDate qDateIntento;
+    private QDateImplementation qDateInicio;
+    private QDateImplementation qDateFin;
+    private QDateImplementation qDateIntento;
 
     private JPanel pnlJuego;
     private JButton btnIniciar;
@@ -23,7 +21,7 @@ public class VentanaJuego extends JFrame {
     private JLabel lblIntentos;
 
     public VentanaJuego() {
-        setTitle("Adivina la Fecha - Integración QDate");
+        setTitle("Adivina la Fecha - QDateImplementation");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 450);
         setLayout(new BorderLayout(10, 10));
@@ -34,14 +32,18 @@ public class VentanaJuego extends JFrame {
 
         JPanel pnlInicio = new JPanel(new FlowLayout());
         pnlInicio.add(new JLabel("Fecha Inicio:"));
-        qDateInicio = new QDate();
-        qDateInicio.setDate(2015, 1, 1);
+        qDateInicio = new QDateImplementation();
+        try {
+            qDateInicio.setDate(2015, 1, 1);
+        } catch (Exception ignored) {}
         pnlInicio.add(qDateInicio);
 
         JPanel pnlFin = new JPanel(new FlowLayout());
         pnlFin.add(new JLabel("Fecha Fin:"));
-        qDateFin = new QDate();
-        qDateFin.setDate(2024, 12, 31);
+        qDateFin = new QDateImplementation();
+        try {
+            qDateFin.setDate(2024, 12, 31);
+        } catch (Exception ignored) {}
         pnlFin.add(qDateFin);
 
         JPanel pnlBtnConfig = new JPanel();
@@ -60,7 +62,7 @@ public class VentanaJuego extends JFrame {
 
         JPanel pnlIntento = new JPanel(new FlowLayout());
         pnlIntento.add(new JLabel("Tu Intento:"));
-        qDateIntento = new QDate();
+        qDateIntento = new QDateImplementation();
         pnlIntento.add(qDateIntento);
 
         JButton btnComprobar = new JButton("Comprobar");
@@ -90,6 +92,7 @@ public class VentanaJuego extends JFrame {
 
         JPanel pnlControl = new JPanel(new FlowLayout());
         lblIntentos = new JLabel("Intentos: 0");
+        lblIntentos.setFont(new Font("Arial", Font.BOLD, 14));
         pnlControl.add(lblIntentos);
 
         pnlJuego.add(pnlControl, BorderLayout.SOUTH);
@@ -103,9 +106,13 @@ public class VentanaJuego extends JFrame {
     }
 
     private void generarRangoAleatorio() {
-        LocalDate[] rango = LogicaJuego.generarRangoAleatorio(1990, 2025);
-        qDateInicio.setDate(rango[0].getYear(), rango[0].getMonthValue(), rango[0].getDayOfMonth());
-        qDateFin.setDate(rango[1].getYear(), rango[1].getMonthValue(), rango[1].getDayOfMonth());
+        try {
+            LocalDate[] rango = LogicaJuego.generarRangoAleatorio(1990, 2025);
+            qDateInicio.setDate(rango[0].getYear(), rango[0].getMonthValue(), rango[0].getDayOfMonth());
+            qDateFin.setDate(rango[1].getYear(), rango[1].getMonthValue(), rango[1].getDayOfMonth());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error al generar rango", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private JLabel crearLabelColor(String texto) {
@@ -113,6 +120,7 @@ public class VentanaJuego extends JFrame {
         lbl.setOpaque(true);
         lbl.setBackground(Color.LIGHT_GRAY);
         lbl.setForeground(Color.WHITE);
+        lbl.setFont(new Font("Arial", Font.BOLD, 14));
         return lbl;
     }
 
@@ -178,7 +186,7 @@ public class VentanaJuego extends JFrame {
         if (comparacion == 0) {
             lblColor.setBackground(Color.GREEN);
             lblTexto.setText("¡Correcto!");
-            lblTexto.setForeground(Color.GREEN);
+            lblTexto.setForeground(new Color(0, 150, 0));
         } else if (comparacion > 0) {
             lblColor.setBackground(Color.RED);
             lblTexto.setText("Te has pasado");
