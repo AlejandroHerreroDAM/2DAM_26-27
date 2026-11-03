@@ -1,0 +1,20 @@
+com.example.pruebaexamenrecyclerview
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id bAnadirProducto
+id bBorrarUltimo
+id listado
+id main
+id textInventario
+id tvNombreArticulo
+layout activity_main
+layout item_inventario
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base_Theme_PruebaExamenRecyclerView
+style Theme_PruebaExamenRecyclerView
+xml backup_rules
+xml data_extraction_rules
