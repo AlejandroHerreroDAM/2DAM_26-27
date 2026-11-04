@@ -25,11 +25,6 @@ public class TresEnRaya extends HttpServlet {
         String marca = req.getParameter("marca");
         String coordenada = req.getParameter("coordenada");
 
-        if (marca==null || coordenada==null) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,"ASver si te entreras cabron, parametro requertido");
-            return;
-        }
-
         marca = marca.toUpperCase();
         if (!marca.equals("X") && !marca.equals("O")) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST,"La marca tiene que ser X o O.");

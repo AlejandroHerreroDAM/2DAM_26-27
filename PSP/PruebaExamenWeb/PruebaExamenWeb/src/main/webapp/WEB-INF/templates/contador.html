@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador de Puntos</title>
+</head>
+<body>
+<h1>Mi Marcador Web</h1>
+
+<!-- Thymeleaf leerá las variables "puntosSumados" y "totalPuntos" de Java -->
+<p>Última aportación: <strong th:text="${puntosSumados}">0</strong> puntos.</p>
+<h2>Total en sesión: <span th:text="${totalPuntos}">0</span></h2>
+</body>
+</html>
