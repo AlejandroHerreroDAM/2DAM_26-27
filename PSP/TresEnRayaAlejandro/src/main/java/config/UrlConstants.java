@@ -22,4 +22,5 @@ public final class UrlConstants {
     public static final String TEMPLATE_HOLA = "hola";
     public static final String TEMPLATE_TRES_EN_RAYA = "tresEnRaya";
     public static final String TEMPLATE_ADIVINA = "adivina";
+    public static final String TEMPLATE_ERROR = "error";
 }
