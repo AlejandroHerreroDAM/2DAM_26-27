@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.example.pruebaexamenrecyclerview.app-mergeDebugResources-39:/layout/activity_main.xml",
+        "source": "com.example.pruebaexamenrecyclerview.app-main-42:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.pruebaexamenrecyclerview.app-mergeDebugResources-39:/layout/item_inventario.xml",
+        "source": "com.example.pruebaexamenrecyclerview.app-main-42:/layout/item_inventario.xml"
+    }
+]
