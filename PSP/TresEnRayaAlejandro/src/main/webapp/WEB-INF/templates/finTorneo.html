@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ceremonia de Clausura</title>
+</head>
+<body>
+
+<h1>Podio de ganadores</h1>
+
+<h2 th:text="${tituloPuesto}"></h2>
+
+<div th:if="${jugadorPremiado != null}">
+    <p th:text="${jugadorPremiado.nombre} + ' con ' + ${jugadorPremiado.victorias} + ' victorias'"></p>
+</div>
+
+</body>
+</html>
