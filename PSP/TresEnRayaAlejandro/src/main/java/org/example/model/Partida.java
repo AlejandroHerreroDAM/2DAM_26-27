@@ -1,4 +1,4 @@
-package org.example;
+package org.example.model;
 
 import java.util.Arrays;
 
@@ -75,6 +75,14 @@ public class Partida {
 
     public void setMovimientos(Movimiento[] movimientos) {
         this.movimientos = movimientos;
+    }
+
+    public int getContadorMovimientos() {
+        return contadorMovimientos;
+    }
+
+    public void setContadorMovimientos(int contadorMovimientos) {
+        this.contadorMovimientos = contadorMovimientos;
     }
 
     public void registrarMovimiento(Movimiento mov) {

@@ -1,12 +1,14 @@
 package org.example;
 
-import config.ThymeleafConstants;
 import config.UrlConstants;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.model.Jugador;
+import org.example.model.Movimiento;
+import org.example.model.Partida;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
@@ -14,6 +16,7 @@ import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @WebServlet("/tres")
 public class TresEnRayaServlet extends HttpServlet {
@@ -21,121 +24,130 @@ public class TresEnRayaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Partida partidaActual = (Partida) req.getSession().getAttribute("partidaActual");
-        String[] Tablero = (String[]) req.getSession().getAttribute("Tablero");
-        String turnoActual = (String) req.getSession().getAttribute("turnoActual");
+        var webExchange = JakartaServletWebApplication.buildApplication(getServletContext()).buildExchange(req, resp);
+        WebContext ctx = new WebContext(webExchange);
+        resp.setContentType(config.ThymeleafConstants.CONTENT_TYPE);
+        TemplateEngine engine = (TemplateEngine) getServletContext().getAttribute(config.ThymeleafConstants.TEMPLATE_ENGINE_ATTR);
 
-        if (partidaActual == null || Tablero == null || turnoActual == null) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "No hay ninguna partida en curso. Ve a /comienzo primero.");
+        String posicion = req.getParameter("posicion");
+
+        if (posicion == null || posicion.isEmpty()) {
+            ctx.setVariable("mensajeError", "Te has olvidado de enviar la posición en la URL.");
+            engine.process(config.UrlConstants.TEMPLATE_ERROR, ctx, resp.getWriter());
             return;
         }
 
-        String nombre = req.getParameter("nombre");
-        String coordenada = req.getParameter("coordenada");
-
-        if (nombre == null || coordenada == null) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Faltan parametros. Usa ?nombre=Juan&coordenada=5");
-            return;
-        }
-
-        if (!nombre.equalsIgnoreCase(turnoActual)) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "No es tu turno. Le toca a: " + turnoActual);
-            return;
-        }
-
-        int pos;
+        int posicionAConvertir;
         try {
-            pos = Integer.parseInt(coordenada);
-            if (pos < 1 || pos > 9) {
-                resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "La coordenada debe ser del 1 al 9.");
-                return;
-            }
+            posicionAConvertir = Integer.parseInt(posicion);
         } catch (NumberFormatException e) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "La coordenada debe ser un numero.");
+            ctx.setVariable("mensajeError", "Los puntos deben ser números, no letras.");
+            engine.process(config.UrlConstants.TEMPLATE_ERROR, ctx, resp.getWriter());
             return;
         }
 
-        if (!Tablero[pos - 1].equals("-")) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Esa casilla ya esta ocupada.");
+        if (posicionAConvertir < 1 || posicionAConvertir > 9) {
+            ctx.setVariable("mensajeError", "La posición debe ser un número entre 1 y 9.");
+            engine.process(config.UrlConstants.TEMPLATE_ERROR, ctx, resp.getWriter());
             return;
         }
 
-        String miSimbolo = nombre.equalsIgnoreCase(partidaActual.getJugador1().getNombre())
-                ? partidaActual.getSimbolo1()
-                : partidaActual.getSimbolo2();
+        var session = req.getSession();
 
-        Tablero[pos - 1] = miSimbolo;
-        partidaActual.registrarMovimiento(new Movimiento(nombre, coordenada));
+        Partida partidaActual = (Partida) session.getAttribute("partidaActual");
+        String[] tablero = (String[]) session.getAttribute("Tablero");
+        String turnoActual = (String) session.getAttribute("turnoActual");
+
+        if (partidaActual == null || turnoActual == null) {
+            ctx.setVariable("mensajeError", "Debes registrar los jugadores antes de empezar");
+            engine.process(config.UrlConstants.TEMPLATE_ERROR, ctx, resp.getWriter());
+            return;
+        }
+
+        if (tablero == null) {
+            tablero = new String[]{"-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            session.setAttribute("Tablero", tablero);
+        }
+
+        if (!Objects.equals(tablero[posicionAConvertir - 1], "-")) {
+            pintarTablero(tablero, ctx);
+            ctx.setVariable("siguienteTurno", turnoActual);
+            ctx.setVariable("mensajeComienzo", "Partida " + partidaActual.getJugador1().getNombre() + " (" + partidaActual.getSimbolo1() + ") VS " + partidaActual.getJugador2().getNombre() + " (" + partidaActual.getSimbolo2() + ").");
+            ctx.setVariable("mensajeErrorPartida", "Esa posición ya está ocupada, elige otra coordenada.");
+
+            engine.process(UrlConstants.TEMPLATE_TRES_EN_RAYA, ctx, resp.getWriter());
+            return;
+        }
+
+        String simboloActual = turnoActual.equalsIgnoreCase(partidaActual.getJugador1().getNombre()) ? partidaActual.getSimbolo1() : partidaActual.getSimbolo2();
+
+        tablero[posicionAConvertir - 1] = simboloActual;
+        partidaActual.registrarMovimiento(new Movimiento(turnoActual, posicion));
+
+        String siguienteTurno = turnoActual.equalsIgnoreCase(partidaActual.getJugador1().getNombre()) ? partidaActual.getJugador2().getNombre() : partidaActual.getJugador1().getNombre();
+
+        session.setAttribute("turnoActual", siguienteTurno);
+
+        pintarTablero(tablero, ctx);
+        ctx.setVariable("siguienteTurno", siguienteTurno);
+        ctx.setVariable("mensajeComienzo", "Partida " + partidaActual.getJugador1().getNombre() + " (" + partidaActual.getSimbolo1() + ") VS " + partidaActual.getJugador2().getNombre() + " (" + partidaActual.getSimbolo2() + ")");
+
 
         boolean ganador =
-                (Tablero[0].equals(miSimbolo) && Tablero[1].equals(miSimbolo) && Tablero[2].equals(miSimbolo)) ||
-                        (Tablero[3].equals(miSimbolo) && Tablero[4].equals(miSimbolo) && Tablero[5].equals(miSimbolo)) ||
-                        (Tablero[6].equals(miSimbolo) && Tablero[7].equals(miSimbolo) && Tablero[8].equals(miSimbolo)) ||
-                        (Tablero[0].equals(miSimbolo) && Tablero[3].equals(miSimbolo) && Tablero[6].equals(miSimbolo)) ||
-                        (Tablero[1].equals(miSimbolo) && Tablero[4].equals(miSimbolo) && Tablero[7].equals(miSimbolo)) ||
-                        (Tablero[2].equals(miSimbolo) && Tablero[5].equals(miSimbolo) && Tablero[8].equals(miSimbolo)) ||
-                        (Tablero[0].equals(miSimbolo) && Tablero[4].equals(miSimbolo) && Tablero[8].equals(miSimbolo)) ||
-                        (Tablero[2].equals(miSimbolo) && Tablero[4].equals(miSimbolo) && Tablero[6].equals(miSimbolo));
+                (tablero[0].equals(simboloActual) && tablero[1].equals(simboloActual) && tablero[2].equals(simboloActual)) ||
+                        (tablero[3].equals(simboloActual) && tablero[4].equals(simboloActual) && tablero[5].equals(simboloActual)) ||
+                        (tablero[6].equals(simboloActual) && tablero[7].equals(simboloActual) && tablero[8].equals(simboloActual)) ||
+                        (tablero[0].equals(simboloActual) && tablero[3].equals(simboloActual) && tablero[6].equals(simboloActual)) ||
+                        (tablero[1].equals(simboloActual) && tablero[4].equals(simboloActual) && tablero[7].equals(simboloActual)) ||
+                        (tablero[2].equals(simboloActual) && tablero[5].equals(simboloActual) && tablero[8].equals(simboloActual)) ||
+                        (tablero[0].equals(simboloActual) && tablero[4].equals(simboloActual) && tablero[8].equals(simboloActual)) ||
+                        (tablero[2].equals(simboloActual) && tablero[4].equals(simboloActual) && tablero[6].equals(simboloActual));
 
-        boolean empate = true;
-        for (String casilla : Tablero) {
-            if (casilla.equals("-")) {
-                empate = false;
-                break;
-            }
-        }
+        boolean empate = !ganador && partidaActual.getContadorMovimientos() == 9;
 
         if (ganador || empate) {
-            if (ganador) {
-                Jugador jGanador = nombre.equalsIgnoreCase(partidaActual.getJugador1().getNombre()) ? partidaActual.getJugador1() : partidaActual.getJugador2();
-                Jugador jPerdedor = nombre.equalsIgnoreCase(partidaActual.getJugador1().getNombre()) ? partidaActual.getJugador2() : partidaActual.getJugador1();
-
-                partidaActual.setGanador(jGanador);
-                partidaActual.setPerdedor(jPerdedor);
-                jGanador.setVictorias(jGanador.getVictorias() + 1);
-            }
 
             List<Partida> historialPartidas = (List<Partida>) getServletContext().getAttribute("historialPartidas");
+
             if (historialPartidas == null) {
                 historialPartidas = new ArrayList<>();
                 getServletContext().setAttribute("historialPartidas", historialPartidas);
             }
+
+            if (ganador) {
+                Jugador jGanador = turnoActual.equalsIgnoreCase(partidaActual.getJugador1().getNombre()) ? partidaActual.getJugador1() : partidaActual.getJugador2();
+                Jugador jPerdedor = turnoActual.equalsIgnoreCase(partidaActual.getJugador1().getNombre()) ? partidaActual.getJugador2() : partidaActual.getJugador1();
+
+                partidaActual.setGanador(jGanador);
+                partidaActual.setPerdedor(jPerdedor);
+                jGanador.setVictorias(jGanador.getVictorias() + 1);
+                ctx.setVariable("mensajeComienzo", "¡Partida finalizada! Ha ganado " + partidaActual.getGanador().getNombre());
+
+            } else {
+                ctx.setVariable("mensajeComienzo", "¡Partida finalizada! Ha habido un empate.");
+            }
+
             historialPartidas.add(partidaActual);
 
-            req.getSession().removeAttribute("partidaActual");
-            req.getSession().removeAttribute("Tablero");
-            req.getSession().removeAttribute("turnoActual");
+            session.removeAttribute("partidaActual");
+            session.removeAttribute("Tablero");
+            session.removeAttribute("turnoActual");
 
-            resp.setContentType("text/html");
-            if (ganador) {
-                resp.getWriter().println("<h1>¡Ha ganado " + nombre + " (" + miSimbolo + ")!</h1>");
-            } else {
-                resp.getWriter().println("<h1>¡Empate!</h1>");
-            }
-            resp.getWriter().println("<p><a href='/tu_proyecto/comienzo'>Nueva partida</a></p>");
+            engine.process(UrlConstants.TEMPLATE_TRES_EN_RAYA, ctx, resp.getWriter());
             return;
         }
 
-        String siguienteTurno = nombre.equalsIgnoreCase(partidaActual.getJugador1().getNombre())
-                ? partidaActual.getJugador2().getNombre()
-                : partidaActual.getJugador1().getNombre();
+        engine.process(UrlConstants.TEMPLATE_TRES_EN_RAYA, ctx, resp.getWriter());
+    }
 
-        req.getSession().setAttribute("turnoActual", siguienteTurno);
+    private static void pintarTablero(String[] tablero, WebContext ctx) {
+        String fila1 = tablero[0] + " " + tablero[1] + " " + tablero[2];
+        String fila2 = tablero[3] + " " + tablero[4] + " " + tablero[5];
+        String fila3 = tablero[6] + " " + tablero[7] + " " + tablero[8];
 
-        String fila1 = Tablero[0] + " " + Tablero[1] + " " + Tablero[2];
-        String fila2 = Tablero[3] + " " + Tablero[4] + " " + Tablero[5];
-        String fila3 = Tablero[6] + " " + Tablero[7] + " " + Tablero[8];
-
-        var webExchange = JakartaServletWebApplication.buildApplication(getServletContext()).buildExchange(req, resp);
-        WebContext ctx = new WebContext(webExchange);
         ctx.setVariable("fila1", fila1);
         ctx.setVariable("fila2", fila2);
         ctx.setVariable("fila3", fila3);
-        ctx.setVariable("siguienteTurno", siguienteTurno);
-        ctx.setVariable("mensajeComienzo", "Partida: " + partidaActual.getJugador1().getNombre() + " (" + partidaActual.getSimbolo1() + ") VS " + partidaActual.getJugador2().getNombre() + " (" + partidaActual.getSimbolo2() + ").");
-
-        resp.setContentType(ThymeleafConstants.CONTENT_TYPE);
-        ((TemplateEngine) getServletContext().getAttribute(ThymeleafConstants.TEMPLATE_ENGINE_ATTR))
-                .process(UrlConstants.TEMPLATE_TRES_EN_RAYA, ctx, resp.getWriter());
     }
+
 }
