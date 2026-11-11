@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen de mis Tareas</title>
+</head>
+<body>
+<h1>Resumen de Tareas</h1>
+
+<ul>
+    <li><strong>Total de tareas:</strong> <span th:text="${total}"></span></li>
+    <li><strong>Completadas:</strong> <span th:text="${completadas}"></span></li>
+    <li><strong>Pendientes:</strong> <span th:text="${pendientes}"></span></li>
+</ul>
+
+<h2>Listado de tareas</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Estado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Bucle for equivalente en Thymeleaf para recorrer la lista -->
+    <tr th:each="t : ${tareas}">
+        <td th:text="${t.id}"></td>
+        <td th:text="${t.titulo}"></td>
+
+        <!-- Operador ternario para mostrar un string dependiendo del boolean -->
+        <td th:text="${t.completada ? 'Completada' : 'Pendiente'}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

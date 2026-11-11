@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la Tarea</title>
+</head>
+<body>
+<h1>Información de la Tarea</h1>
+
+<ul>
+    <li><strong>ID:</strong> <span th:text="${tarea.id}"></span></li>
+    <li><strong>Título:</strong> <span th:text="${tarea.titulo}"></span></li>
+    <li><strong>Descripción:</strong> <span th:text="${tarea.descripcion}"></span></li>
+    <li><strong>Prioridad (1-3):</strong> <span th:text="${tarea.prioridad}"></span></li>
+
+    <!-- Usamos un condicional básico de Thymeleaf para mostrar el estado con texto -->
+    <li><strong>Estado:</strong>
+        <span th:if="${tarea.completada}" style="color: green;">Completada</span>
+        <span th:unless="${tarea.completada}" style="color: orange;">Pendiente</span>
+    </li>
+</ul>
+
+</body>
+</html>
