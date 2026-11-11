@@ -1,0 +1,8 @@
+com.example.pruebaexamenrecyclerview.app-pngs-0 D:\2DAM\2DAM_26-27\Moviles\PruebaExamenRecyclerView\app\build\generated\res\pngs\debug
+com.example.pruebaexamenrecyclerview.app-updated_navigation_xml-1 D:\2DAM\2DAM_26-27\Moviles\PruebaExamenRecyclerView\app\build\generated\updated_navigation_xml\debug
+com.example.pruebaexamenrecyclerview.app-packageDebugResources-2 D:\2DAM\2DAM_26-27\Moviles\PruebaExamenRecyclerView\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.pruebaexamenrecyclerview.app-packageDebugResources-3 D:\2DAM\2DAM_26-27\Moviles\PruebaExamenRecyclerView\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.pruebaexamenrecyclerview.app-debug-4 D:\2DAM\2DAM_26-27\Moviles\PruebaExamenRecyclerView\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.pruebaexamenrecyclerview.app-debug-5 D:\2DAM\2DAM_26-27\Moviles\PruebaExamenRecyclerView\app\src\debug\res
+com.example.pruebaexamenrecyclerview.app-main-6 D:\2DAM\2DAM_26-27\Moviles\PruebaExamenRecyclerView\app\src\main\res
+gradleHome-0 C:\Users\alexx\.gradle
