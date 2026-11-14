@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+  "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport name="tareas" pageWidth="595" pageHeight="842" columnWidth="515"
+              leftMargin="40" rightMargin="40" topMargin="40" bottomMargin="40">
+    <field name="nombre" class="java.lang.String"/>
+    <field name="responsable" class="java.lang.String"/>
+    <field name="porcentaje" class="java.lang.Integer"/>
+    <field name="estado" class="java.lang.String"/>
+    <title>
+        <band height="45">
+            <staticText>
+                <reportElement x="0" y="0" width="515" height="30"/>
+                <textElement><font size="20" isBold="true"/></textElement>
+                <text><![CDATA[Informe de tareas]]></text>
+            </staticText>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="25">
+            <staticText><reportElement x="0" y="0" width="180" height="25"/><text><![CDATA[Tarea]]></text></staticText>
+            <staticText><reportElement x="180" y="0" width="130" height="25"/><text><![CDATA[Responsable]]></text></staticText>
+            <staticText><reportElement x="310" y="0" width="90" height="25"/><text><![CDATA[Avance]]></text></staticText>
+            <staticText><reportElement x="400" y="0" width="115" height="25"/><text><![CDATA[Estado]]></text></staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="25">
+            <textField><reportElement x="0" y="0" width="180" height="25"/><textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression></textField>
+            <textField><reportElement x="180" y="0" width="130" height="25"/><textFieldExpression><![CDATA[$F{responsable}]]></textFieldExpression></textField>
+            <textField><reportElement x="310" y="0" width="90" height="25"/><textFieldExpression><![CDATA[$F{porcentaje} + "%"]]></textFieldExpression></textField>
+            <textField><reportElement x="400" y="0" width="115" height="25"/><textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression></textField>
+        </band>
+    </detail>
+</jasperReport>

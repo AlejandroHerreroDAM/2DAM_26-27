@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="12.0" style="-fx-background-color: #f4f6f9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controlador.FormController">
+    <padding>
+        <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="lblTitulo" text="Tarea" textFill="#2c3e50">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+
+    <VBox spacing="4.0">
+        <Label text="Nombre de la tarea *:" />
+        <TextField fx:id="txtNombre" promptText="Ej: Configurar base de datos" />
+    </VBox>
+
+    <VBox spacing="4.0">
+        <Label text="Descripción *:" />
+        <TextArea fx:id="txtDescripcion" prefHeight="70.0" promptText="Detalles de la tarea..." wrapText="true" />
+    </VBox>
+
+    <VBox spacing="4.0">
+        <Label text="Responsable *:" />
+        <TextField fx:id="txtResponsable" promptText="Nombre del asignado" />
+    </VBox>
+
+    <VBox spacing="4.0">
+        <Label text="Ubicación (Opcional):" />
+        <TextField fx:id="txtUbicacion" promptText="Ej: Oficina Central / Remoto" />
+    </VBox>
+
+    <VBox spacing="4.0">
+        <HBox spacing="10.0">
+            <Label text="Porcentaje de consecución:" />
+            <Label fx:id="lblPorcentaje" style="-fx-font-weight: bold;" text="0%" textFill="#2980b9" />
+        </HBox>
+        <Slider fx:id="sliderPorcentaje" majorTickUnit="25.0" max="100.0" showTickLabels="true" showTickMarks="true" />
+    </VBox>
+
+    <Label fx:id="lblError" textFill="#e74c3c" />
+
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <Button onAction="#onCancelarClick" text="Cancelar" />
+        <Button defaultButton="true" onAction="#onGuardarClick" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;" text="Guardar" />
+    </HBox>
+</VBox>
