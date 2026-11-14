@@ -32,7 +32,8 @@ public class Constants {
                             7. Add Medical Record
                             8. Update Medical Record
                             9. Delete Medical Record
-                            10. Exit
+                            10. Restore Patient
+                            11. Exit
                             """;
     public static final String ENTER_CHOICE = "Enter your choice: ";
     public static final String PATIENT_ID = "Patient id: ";
@@ -40,6 +41,11 @@ public class Constants {
     public static final String PATIENT_ADDED = "Patient added with id: ";
     public static final String PATIENT_UPDATED = "Patient updated.";
     public static final String PATIENT_DELETED = "Patient deleted.";
+    public static final String PATIENT_RESTORED = "Patient restored.";
+    public static final String PATIENT_BACKUP_CREATED = "Patient backup created at: ";
+    public static final String PATIENT_BACKUP_NOT_FOUND = "No backup was found for patient id: ";
+    public static final String RESTORE_PATIENT_ERROR = "Patient restore error";
+    public static final String CRITICAL_RESTORE_PATIENT = "Critical error with RestorePatient: ";
     public static final String MEDICAL_RECORD_ADDED = "Medical record added with id: ";
     public static final String MEDICAL_RECORD_UPDATED = "Medical record updated.";
     public static final String MEDICAL_RECORD_DELETED = "Medical record deleted.";

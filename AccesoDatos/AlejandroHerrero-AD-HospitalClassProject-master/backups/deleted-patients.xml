@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deletedPatients>
+                
+
+    <patientBackup patientId="1">
+        <table name="patients">
+            <row>
+                <field name="patient_id" type="4">1</field>
+                <field name="name" type="12">Pepito</field>
+                <field name="date_of_birth" type="91">1980-05-15</field>
+                <field name="phone" type="12">555-1234</field>
+            </row>
+        </table>
+        <table name="medical_records">
+            <row>
+                <field name="record_id" type="4">1</field>
+                <field name="patient_id" type="4">1</field>
+                <field name="doctor_id" type="4">1</field>
+                <field name="diagnosis" type="-1">Hypertension</field>
+                <field name="admission_date" type="91">2023-01-10</field>
+            </row>
+            <row>
+                <field name="record_id" type="4">6</field>
+                <field name="patient_id" type="4">1</field>
+                <field name="doctor_id" type="4">1</field>
+                <field name="diagnosis" type="-1">asdf</field>
+                <field name="admission_date" type="91">2004-04-09</field>
+            </row>
+            <row>
+                <field name="record_id" type="4">9</field>
+                <field name="patient_id" type="4">1</field>
+                <field name="doctor_id" type="4">2</field>
+                <field name="diagnosis" type="-1">Sore Neck</field>
+                <field name="admission_date" type="91">2026-03-12</field>
+            </row>
+        </table>
+        <table name="prescribed_medications">
+            <row>
+                <field name="prescription_id" type="4">1</field>
+                <field name="record_id" type="4">1</field>
+                <field name="medication_name" type="12">Losartan</field>
+                <field name="dosage" type="12">50mg</field>
+            </row>
+        </table>
+        <table name="appointments">
+            <row>
+                <field name="appointment_id" type="4">1</field>
+                <field name="patient_id" type="4">1</field>
+                <field name="doctor_id" type="4">1</field>
+                <field name="appointment_date" type="93">2023-01-15T09:00</field>
+            </row>
+        </table>
+        <table name="patient_payments">
+            <row>
+                <field name="payment_id" type="4">1</field>
+                <field name="patient_id" type="4">1</field>
+                <field name="amount" type="3">150.00</field>
+                <field name="payment_date" type="91">2023-01-20</field>
+            </row>
+        </table>
+    </patientBackup>
+</deletedPatients>
