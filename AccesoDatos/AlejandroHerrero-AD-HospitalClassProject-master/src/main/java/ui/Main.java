@@ -104,6 +104,13 @@ public class Main {
                             break;
 
                         case 10:
+                            System.out.print(Constants.PATIENT_ID);
+                            int restoreId = sc.nextInt();
+                            sc.nextLine();
+                            patientui.restorePatient(restoreId);
+                            break;
+
+                        case 11:
                             System.out.println(Constants.EXITING);
                             break;
 
@@ -112,7 +119,7 @@ public class Main {
                             break;
                     }
 
-                } while (option != 10);
+                } while (option != 11);
 
             } else {
                 System.out.println(Constants.LOGIN_FAILED);

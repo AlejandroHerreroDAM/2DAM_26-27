@@ -2,6 +2,7 @@ package dao.interfaces;
 
 import dao.model.Patient;
 import dao.model.UserLogin;
+import domain.model.PatientBackup;
 
 import java.util.List;
 
@@ -14,4 +15,8 @@ public interface PatientRepository {
     void update(Patient patientDatabase);
 
     void delete(int idDelete, boolean confirm);
+
+    PatientBackup createBackup(int patientId);
+
+    void restore(PatientBackup backup);
 }

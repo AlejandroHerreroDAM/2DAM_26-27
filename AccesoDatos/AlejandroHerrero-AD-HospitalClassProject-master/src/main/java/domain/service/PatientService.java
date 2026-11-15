@@ -15,11 +15,14 @@ import java.util.List;
 public class PatientService {
     private final PatientRepository patientRepository;
     private final PatientDTOMapper patientMapper;
+    private final PatientBackupService patientBackupService;
 
     @Inject
-    public PatientService(JDBCPatientRepository patientRepository, PatientDTOMapper patientMapper) {
+    public PatientService(JDBCPatientRepository patientRepository, PatientDTOMapper patientMapper,
+                          PatientBackupService patientBackupService) {
         this.patientRepository = patientRepository;
         this.patientMapper = patientMapper;
+        this.patientBackupService = patientBackupService;
     }
 
     public List<PatientDTO> getAllPatients(){
@@ -47,7 +50,14 @@ public class PatientService {
     }
 
     public void deletePatient(int id, boolean b){
+        if (b) {
+            patientBackupService.backup(id);
+        }
         patientRepository.delete(id,b);
+    }
+
+    public void restorePatient(int id) {
+        patientBackupService.restore(id);
     }
 
     private void validatePatient(PatientDTO patient) {
