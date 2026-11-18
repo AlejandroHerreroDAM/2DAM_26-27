@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas</title>
+</head>
+<body>
+<h1 th:text="${tituloEstadisticas}"></h1>
+
+<div th:if="${tipoVista == 'general'}">
+    <p th:each="j : ${ranking}" th:text="${j.nombre} + ' - ' + ${j.victorias} + ' victorias'"></p>
+</div>
+
+
+<div th:if="${tipoVista == 'porNombre'}">
+
+    <p th:each="p : ${partidasJugador}">
+        Rival: <span th:text="${p.jugador1.nombre.equalsIgnoreCase(nombreBuscado) ? p.jugador2.nombre : p.jugador1.nombre}"></span>
+        |
+        Resultado:
+        <span th:if="${p.ganador == null}">Empate</span>
+        <span th:if="${p.ganador != null && p.ganador.nombre.equalsIgnoreCase(nombreBuscado)}">Victoria</span>
+        <span th:if="${p.ganador != null && !p.ganador.nombre.equalsIgnoreCase(nombreBuscado)}">Derrota</span>
+    </p>
+
+</div>
+<div th:if="${tipoVista == 'detallePartida'}">
+
+    <div th:if="${partidaSeleccionada != null}">
+        <p>
+            Jugadores: <span th:text="${partidaSeleccionada.jugador1.nombre}"></span>
+            vs <span th:text="${partidaSeleccionada.jugador2.nombre}"></span>
+        </p>
+        <p>Resultado:
+            <br>
+            <span th:if="${partidaSeleccionada.ganador == null}">Empate</span>
+            <span th:text="${partidaSeleccionada.ganador.nombre}"> ganador.</span>
+            <br>
+            <span th:text="${partidaSeleccionada.perdedor.nombre}"> perdedor.</span>
+
+    </div>
+
+</div>
+</body>
+</html>
