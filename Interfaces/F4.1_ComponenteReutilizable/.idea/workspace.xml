@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="componenteFecha" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c8939bc0-a2c6-4308-b505-dab553cf940e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/out/artifacts/componenteFecha/componenteFecha.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/componenteFecha/componenteFecha.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/QDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/QDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../F4.2_IntegracionQDate/F4.2_IntegracionQDate/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../F4.2_IntegracionQDate/F4.2_IntegracionQDate/.idea/misc.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AlejandroHerreroDAM"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AlejandroHerreroDAM/2DAM_26-27",
+    "accountId": "a15e654d-7ef3-47e9-9bba-cf925395235b"
+  }
+}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.921106758635873" />
+      <entry key="MS500" value="3.5111914351283597" />
+      <entry key="S2" value="9.353441390082462" />
+      <entry key="S5" value="19.76491150198775" />
+      <entry key="S10" value="27.988419752183376" />
+      <entry key="S30" value="36.43939533718372" />
+      <entry key="S60" value="39.08753385054468" />
+      <entry key="M2" value="40.5088880914129" />
+      <entry key="M5" value="41.39493599477196" />
+      <entry key="M10" value="41.69601019159229" />
+      <entry key="M15" value="41.79701457476235" />
+      <entry key="M30" value="41.89834410983326" />
+      <entry key="H1" value="41.94913118513834" />
+      <entry key="H2" value="41.97455536568388" />
+      <entry key="H4" value="41.98727512493943" />
+      <entry key="D1" value="41.997878832125394" />
+      <entry key="W1" value="41.9996969673138" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.8713113416979166" />
+      <entry key="MS500" value="3.4722721319852106" />
+      <entry key="S2" value="9.333495339013107" />
+      <entry key="S5" value="19.75023521231828" />
+      <entry key="S10" value="27.977830574906854" />
+      <entry key="S30" value="36.43460556246254" />
+      <entry key="S60" value="39.08492897154016" />
+      <entry key="M2" value="40.507528198191665" />
+      <entry key="M5" value="41.39437756261241" />
+      <entry key="M10" value="41.69572850357487" />
+      <entry key="M15" value="41.79682622894241" />
+      <entry key="M30" value="41.898249658888645" />
+      <entry key="H1" value="41.94908388994466" />
+      <entry key="H2" value="41.974531700629996" />
+      <entry key="H4" value="41.98726328804494" />
+      <entry key="D1" value="41.99787685870274" />
+      <entry key="W1" value="41.99969668538142" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3LJZ7MlenV1J2tdP9YUOWGBfU0O" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "F4.2__IntegracionQDate",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/2dam/2DAM_26-27/Interfaces/F4.1_ComponenteReutilizable",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\2dam\2DAM_26-27\Interfaces\F4.1_ComponenteReutilizable\src\main\java" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c8939bc0-a2c6-4308-b505-dab553cf940e" name="Changes" comment="" />
+      <created>1793173962873</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1793173962873</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

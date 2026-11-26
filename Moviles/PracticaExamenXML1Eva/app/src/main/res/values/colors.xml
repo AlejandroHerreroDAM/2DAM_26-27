@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary (Morados: Barra superior, Botón Añadir, Checkbox, Borde seleccionado) -->
+    <color name="md_theme_light_primary">#4C3BC6</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#F3F0FF</color>
+    <color name="md_theme_light_onPrimaryContainer">#21157A</color>
+
+    <!-- Secondary (Grises azulados: Iconos y textos secundarios) -->
+    <color name="md_theme_light_secondary">#5B5D72</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#E0E1F9</color>
+    <color name="md_theme_light_onSecondaryContainer">#181A2C</color>
+
+    <!-- Tertiary (Verdes: Etiqueta "Activo") -->
+    <color name="md_theme_light_tertiary">#15803D</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#DCFCE7</color>
+    <color name="md_theme_light_onTertiaryContainer">#052E16</color>
+
+    <!-- Error (Rojos: Etiqueta "Inactivo" y Botón "Borrar") -->
+    <color name="md_theme_light_error">#DC2626</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_errorContainer">#FEE2E2</color>
+    <color name="md_theme_light_onErrorContainer">#991B1B</color>
+
+    <!-- Superficies, Fondo y Bordes -->
+    <color name="md_theme_light_background">#F8F9FA</color>
+    <color name="md_theme_light_onBackground">#1F2937</color>
+    <color name="md_theme_light_surface">#FFFFFF</color>
+    <color name="md_theme_light_onSurface">#1F2937</color>
+    <color name="md_theme_light_onSurfaceVariant">#6B7280</color>
+    <color name="md_theme_light_outline">#9CA3AF</color>
+    <color name="md_theme_light_outlineVariant">#E5E7EB</color>
+</resources>

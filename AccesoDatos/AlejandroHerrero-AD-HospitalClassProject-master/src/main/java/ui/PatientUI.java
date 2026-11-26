@@ -1,6 +1,7 @@
 package ui;
 
 import domain.exceptions.AppException;
+import domain.exceptions.BackupNotFoundException;
 import domain.exceptions.DatabaseError;
 import domain.exceptions.DuplicatedUsernameException;
 import domain.exceptions.ForeignKeyException;
@@ -89,6 +90,19 @@ public class PatientUI {
         } catch (Exception e) {
             Logger.getLogger(PatientUI.class.getName()).log(Level.SEVERE, Constants.UNEXPECTED_ERROR, e);
             throw new AppException(Constants.CRITICAL_DELETE_PATIENT);
+        }
+    }
+
+    public void restorePatient(int idPatient) {
+        try {
+            patientService.restorePatient(idPatient);
+            System.out.println(Constants.PATIENT_RESTORED);
+        } catch (BackupNotFoundException e) {
+            System.out.println(Constants.PATIENT_BACKUP_NOT_FOUND + idPatient);
+        } catch (Exception e) {
+            Logger.getLogger(PatientUI.class.getName()).log(Level.SEVERE,
+                    Constants.RESTORE_PATIENT_ERROR, e);
+            System.out.println(Constants.RESTORE_PATIENT_ERROR + ": " + e.getMessage());
         }
     }
 

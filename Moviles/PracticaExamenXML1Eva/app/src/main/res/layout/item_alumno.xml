@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardAlumno"
+    style="@style/Widget.Material3.CardView.Outlined"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:cardCornerRadius="12dp"
+    app:strokeColor="?attr/colorOutlineVariant"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- tvIniciales muestra las iniciales del alumno. -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:cardBackgroundColor="?attr/colorPrimary"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvIniciales"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="?attr/colorOnPrimary"
+                android:textStyle="bold"
+                tools:text="LA" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- cardEstado y tvEstadoAlumno muestran activo o inactivo. -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="?attr/colorTertiaryContainer"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvEstadoAlumno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:textColor="?attr/colorOnTertiaryContainer"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="Activo" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- tvNombreAlumno muestra alumno.nombre. -->
+        <TextView
+            android:id="@+id/tvNombreAlumno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/cardAvatar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Lucía" />
+
+        <!-- tvApellidosAlumno muestra alumno.apellidos. -->
+        <TextView
+            android:id="@+id/tvApellidosAlumno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/cardEstado"
+            app:layout_constraintStart_toEndOf="@+id/tvNombreAlumno"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Álvarez García" />
+
+        <!-- tvCursoAlumno muestra alumno.curso. -->
+        <TextView
+            android:id="@+id/tvCursoAlumno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintStart_toStartOf="@+id/tvNombreAlumno"
+            app:layout_constraintTop_toBottomOf="@+id/tvNombreAlumno"
+            tools:text="1º DAM" />
+
+        <!-- Separador visual -->
+        <TextView
+            android:id="@+id/tvSeparador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="•"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvCursoAlumno"
+            app:layout_constraintStart_toEndOf="@+id/tvCursoAlumno" />
+
+        <!-- tvEdadAlumno muestra alumno.edad. -->
+        <TextView
+            android:id="@+id/tvEdadAlumno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvCursoAlumno"
+            app:layout_constraintStart_toEndOf="@+id/tvSeparador"
+            tools:text="18 años" />
+
+        <!-- tvCorreoAlumno muestra alumno.email. -->
+        <TextView
+            android:id="@+id/tvCorreoAlumno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvNombreAlumno"
+            app:layout_constraintTop_toBottomOf="@+id/tvCursoAlumno"
+            tools:text="lucia.alvarez@iesquevedo.es" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

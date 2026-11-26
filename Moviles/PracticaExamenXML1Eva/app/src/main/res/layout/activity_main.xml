@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    tools:context=".ui.MainActivity">
+
+    <!-- Fondo barra superior (0% a 8%) -->
+    <View
+        android:id="@+id/topBarBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/filaSuperior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestión de alumnos"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/filaSuperior"
+        app:layout_constraintStart_toStartOf="@+id/marginStart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- textTitleLista muestra el número de filas del listado. -->
+    <TextView
+        android:id="@+id/textTitleLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Lista de alumnos (0)"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/marginStart"
+        app:layout_constraintTop_toBottomOf="@+id/filaSuperior" />
+
+    <!-- listado es el RecyclerView principal de alumnos. -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listado"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/cardFormulario"
+        app:layout_constraintEnd_toStartOf="@+id/marginEnd"
+        app:layout_constraintStart_toStartOf="@+id/marginStart"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleLista"
+        tools:listitem="@layout/item_alumno" />
+
+    <!-- rvAtributos muestra atributos del alumno seleccionado. -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardAtributos"
+        style="@style/Widget.Material3.CardView.Outlined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="?attr/colorSecondaryContainer"
+        app:cardCornerRadius="12dp"
+        app:strokeColor="?attr/colorPrimary"
+        app:strokeWidth="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardFormulario"
+        app:layout_constraintEnd_toStartOf="@+id/marginEnd"
+        app:layout_constraintStart_toStartOf="@+id/marginStart"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tvTituloAtributos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Atributos del alumno (pulsa para eliminar):"
+                android:textColor="?attr/colorOnSecondaryContainer"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAtributos"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_marginTop="4dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTituloAtributos"
+                tools:listitem="@layout/item_atributo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- cardFormulario contiene los campos para añadir un alumno. -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFormulario"
+        style="@style/Widget.Material3.CardView.Outlined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        app:cardBackgroundColor="?attr/colorPrimaryContainer"
+        app:cardCornerRadius="12dp"
+        app:strokeColor="?attr/colorOutlineVariant"
+        app:strokeWidth="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/filaInferior"
+        app:layout_constraintEnd_toStartOf="@+id/marginEnd"
+        app:layout_constraintStart_toStartOf="@+id/marginStart">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="18dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/verticalMiddleForm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/textAddTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Añadir nuevo alumno"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- etNombre guarda el nombre escrito en el formulario. -->
+            <TextView
+                android:id="@+id/textTitleNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Nombre"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textAddTitle" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TextFieldName"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="?attr/colorSurface"
+                app:hintEnabled="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleNombre"
+                app:layout_constraintWidth_percent="0.485">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre del alumno"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLines="1"
+                    android:minHeight="0dp"
+                    android:paddingVertical="6dp"
+                    android:textSize="13sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- etApellidos guarda los apellidos escritos. -->
+            <TextView
+                android:id="@+id/textTitleApellidos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apellidos"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/TextFieldApellidos"
+                app:layout_constraintTop_toTopOf="@+id/textTitleNombre" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TextFieldApellidos"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="?attr/colorSurface"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleApellidos"
+                app:layout_constraintWidth_percent="0.485">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etApellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Apellidos del alumno"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLines="1"
+                    android:minHeight="0dp"
+                    android:paddingVertical="6dp"
+                    android:textSize="13sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- etCurso guarda el curso elegido del desplegable. -->
+            <TextView
+                android:id="@+id/textTitleCurso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Curso"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TextFieldName" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TextFieldCurso"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="173dp"
+                android:layout_height="30dp"
+                app:boxBackgroundColor="?attr/colorSurface"
+                app:hintEnabled="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleCurso"
+                app:layout_constraintWidth_percent="0.485">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/etCurso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:minHeight="0dp"
+                    android:paddingVertical="6dp"
+                    android:text="1º DAM"
+                    android:textSize="13sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- etEdad guarda la edad escrita. -->
+            <TextView
+                android:id="@+id/textTitleEdad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edad"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/TextFieldEdad"
+                app:layout_constraintTop_toTopOf="@+id/textTitleCurso" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TextFieldEdad"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="?attr/colorSurface"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleEdad"
+                app:layout_constraintWidth_percent="0.485">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEdad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Edad"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:minHeight="0dp"
+                    android:paddingVertical="6dp"
+                    android:textSize="13sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- etEmail guarda el correo escrito. -->
+            <TextView
+                android:id="@+id/textTitleEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Email"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TextFieldCurso" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TextFieldEmail"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="?attr/colorSurface"
+                app:hintEnabled="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleEmail"
+                app:layout_constraintWidth_percent="0.485">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="correo@ejemplo.es"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:minHeight="0dp"
+                    android:paddingVertical="6dp"
+                    android:textSize="13sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- checkboxChild1 indica si el alumno está activo. -->
+            <TextView
+                android:id="@+id/textTitleActivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activo"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/checkbox_child_1"
+                app:layout_constraintTop_toTopOf="@+id/textTitleEmail" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/checkbox_child_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:minHeight="0dp"
+                android:text="Alumno activo"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@+id/TextFieldEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/TextFieldEmail"
+                app:layout_constraintWidth_percent="0.485" />
+
+            <!-- buttonAddAction crea un Alumno con los datos del formulario. -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonAddAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="36dp"
+                android:text="+ Añadir alumno"
+                android:textSize="13sp"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox_child_1"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- buttonDeleteAction elimina el alumno seleccionado del listado. -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonDeleteAction"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Borrar alumno seleccionado"
+        android:textColor="?attr/colorError"
+        app:backgroundTint="?attr/colorErrorContainer"
+        app:cornerRadius="10dp"
+        app:strokeColor="?attr/colorError"
+        app:strokeWidth="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/marginEnd"
+        app:layout_constraintStart_toStartOf="@+id/marginStart"
+        app:layout_constraintTop_toTopOf="@+id/filaInferior" />
+
+    <!-- GUIDELINES -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/filaSuperior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/marginStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/marginEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/filaFormulario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/filaInferior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.91" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

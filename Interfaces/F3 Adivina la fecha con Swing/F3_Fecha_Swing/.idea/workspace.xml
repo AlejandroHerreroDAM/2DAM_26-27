@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="020ebdf7-9a7f-4444-837c-319ffab0f9b0" name="Changes" comment="Fix">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/F3_Fecha_Swing_jar/F3-AH.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LogicaJuego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LogicaJuego.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../F4.1_ComponenteReutilizable/out/artifacts/componenteFecha/componenteFecha.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../F4.1_ComponenteReutilizable/out/artifacts/componenteFecha/componenteFecha.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../F4.1_ComponenteReutilizable/src/main/java/org/example/QDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../F4.1_ComponenteReutilizable/src/main/java/org/example/QDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../F4.2_IntegracionQDate/F4.2_IntegracionQDate/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../F4.2_IntegracionQDate/F4.2_IntegracionQDate/.idea/misc.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AlejandroHerreroDAM&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AlejandroHerreroDAM/2DAM_26-27",
+    "accountId": "a15e654d-7ef3-47e9-9bba-cf925395235b"
+  }
+}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="2.105433230210527E-54" />
+      <entry key="MS500" value="1.8393665937078278E-11" />
+      <entry key="S2" value="0.002070937888092762" />
+      <entry key="S5" value="0.084424175796318" />
+      <entry key="S10" value="0.290558386208896" />
+      <entry key="S30" value="0.6623351520234299" />
+      <entry key="S60" value="0.8138397581977854" />
+      <entry key="M2" value="0.9021306768965266" />
+      <entry key="M5" value="0.9596387591176266" />
+      <entry key="M10" value="0.9796115348022535" />
+      <entry key="M15" value="0.9863610785661949" />
+      <entry key="M30" value="0.993157126826463" />
+      <entry key="H1" value="0.9965726901869543" />
+      <entry key="H2" value="0.9982848742653343" />
+      <entry key="H4" value="0.9991420691099612" />
+      <entry key="D1" value="0.999856960377247" />
+      <entry key="W1" value="0.999979564515394" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.000000000001819" />
+      <entry key="MS500" value="1.0044871261586645" />
+      <entry key="S2" value="1.2785405845510496" />
+      <entry key="S5" value="1.9435803830669158" />
+      <entry key="S10" value="2.7770332412543635" />
+      <entry key="S30" value="3.989561484861729" />
+      <entry key="S60" value="4.44917188226247" />
+      <entry key="M2" value="4.712010977810143" />
+      <entry key="M5" value="4.881621465702464" />
+      <entry key="M10" value="4.940265829715186" />
+      <entry key="M15" value="4.96005503746472" />
+      <entry key="M30" value="4.979966151921471" />
+      <entry key="H1" value="4.989967682344444" />
+      <entry key="H2" value="4.99497998625862" />
+      <entry key="H4" value="4.997489028585944" />
+      <entry key="D1" value="4.999581370730738" />
+      <entry key="W1" value="4.999940192535318" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="4.873494996230908E-12" />
+      <entry key="MS500" value="0.00690107498074306" />
+      <entry key="S2" value="0.48349509354210185" />
+      <entry key="S5" value="1.50867702798456" />
+      <entry key="S10" value="2.7123018741544254" />
+      <entry key="S30" value="4.487162653530856" />
+      <entry key="S60" value="5.171630494107317" />
+      <entry key="M2" value="5.565842330077765" />
+      <entry key="M5" value="5.821262397164587" />
+      <entry key="M10" value="5.909760797334766" />
+      <entry key="M15" value="5.939645237782125" />
+      <entry key="M30" value="5.969724499693861" />
+      <entry key="H1" value="5.984837631064754" />
+      <entry key="H2" value="5.992412649676646" />
+      <entry key="H4" value="5.996204781977027" />
+      <entry key="D1" value="5.999367249257836" />
+      <entry key="W1" value="5.99990960178455" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3KkFpumhl8sTgF7ZucEvelZosrJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "F4.2__IntegracionQDate",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "onboarding.tips.debug.path": "D:/2DAM/2DAM_26-27/Interfaces/F3 Adivina la fecha con Swing/F3_Fecha_Swing/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+      <module name="F3_Fecha_Swing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="020ebdf7-9a7f-4444-837c-319ffab0f9b0" name="Changes" comment="" />
+      <created>1792093849950</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1792093849950</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

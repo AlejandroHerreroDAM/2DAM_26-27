@@ -12,6 +12,7 @@ public class SQLQueries {
     public static final String UPDATE_MEDRECORD = "UPDATE medical_records SET patient_id = ?, doctor_id = ?, diagnosis = ?, admission_date = ? WHERE record_id = ?";
     public static final String DELETE_PATIENT = "DELETE FROM patients WHERE patient_id = ?";
     public static final String DELETE_MEDRECORDS_PATIENT = "DELETE FROM medical_records WHERE patient_id = ?";
+    public static final String DELETE_MEDICATIONS_PATIENT = "DELETE FROM prescribed_medications WHERE record_id IN (SELECT record_id FROM medical_records WHERE patient_id = ?)";
     public static final String DELETE_CREDENTIALS_PATIENT = "DELETE FROM user_login WHERE patient_id = ?";
     public static final String DELETE_APPOINTMENTS_PATIENT = "DELETE FROM appointments WHERE patient_id = ?";
     public static final String DELETE_PAYMENTS_PATIENT = "DELETE FROM patient_payments WHERE patient_id = ?";

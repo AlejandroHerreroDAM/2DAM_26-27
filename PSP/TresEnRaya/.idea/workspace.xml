@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TresEnRaya:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b494acd3-c070-416c-b1a1-c753741c650c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/config/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Nuevo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Session.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/TresEnRaya.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AccesoDatos/HospitalSpringClient/src/main/java/org/hospitalspringclient/dao/repositories/JDBCMedicalRecordsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AccesoDatos/HospitalSpringClient/src/main/java/org/hospitalspringclient/dao/repositories/JDBCMedicalRecordsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AccesoDatos/HospitalSpringClient/src/main/java/org/hospitalspringclient/dao/repositories/PrescribedMedRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AccesoDatos/HospitalSpringClient/src/main/java/org/hospitalspringclient/dao/repositories/PrescribedMedRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AccesoDatos/HospitalSpringClient/src/main/java/org/hospitalspringclient/dao/repositories/SpringPatientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AccesoDatos/HospitalSpringClient/src/main/java/org/hospitalspringclient/dao/repositories/SpringPatientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AccesoDatos/HospitalSpringClient/src/main/java/org/hospitalspringclient/domain/service/MedicationsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AccesoDatos/HospitalSpringClient/src/main/java/org/hospitalspringclient/domain/service/MedicationsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AlejandroHerreroDAM"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AlejandroHerreroDAM/2DAM_26-27",
+    "accountId": "a15e654d-7ef3-47e9-9bba-cf925395235b"
+  }
+}]]></component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0000129258963628" />
+      <entry key="MS500" value="1.14450278289604" />
+      <entry key="S2" value="2.0161342325873326" />
+      <entry key="S5" value="2.5907115417153346" />
+      <entry key="S10" value="3.0065282149670476" />
+      <entry key="S30" value="3.608029300269981" />
+      <entry key="S60" value="4.030675029739324" />
+      <entry key="M2" value="4.568265497728029" />
+      <entry key="M5" value="7.234236456487948" />
+      <entry key="M10" value="16.910425527900266" />
+      <entry key="M15" value="25.89397853207029" />
+      <entry key="M30" value="41.79374147722623" />
+      <entry key="H1" value="53.88670263913182" />
+      <entry key="H2" value="61.36589442950666" />
+      <entry key="H4" value="65.52799453859774" />
+      <entry key="D1" value="69.23218229360369" />
+      <entry key="W1" value="69.88974814083312" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="2.3931675838729353E-15" />
+      <entry key="MS500" value="0.0012128343256579634" />
+      <entry key="S2" value="0.2594410568728757" />
+      <entry key="S5" value="1.019004309830018" />
+      <entry key="S10" value="1.8656883845252583" />
+      <entry key="S30" value="3.037929291831217" />
+      <entry key="S60" value="3.47631016095901" />
+      <entry key="M2" value="3.7301722511845368" />
+      <entry key="M5" value="4.050822616211076" />
+      <entry key="M10" value="4.514669388431542" />
+      <entry key="M15" value="4.829624654110091" />
+      <entry key="M30" value="5.298207767380651" />
+      <entry key="H1" value="5.613574723647228" />
+      <entry key="H2" value="5.7969546745567815" />
+      <entry key="H4" value="5.895889230441" />
+      <entry key="D1" value="5.982277156400671" />
+      <entry key="W1" value="5.9974589232384155" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.6155727110484043" />
+      <entry key="MS500" value="0.9756931543785627" />
+      <entry key="S2" value="1.963876911050571" />
+      <entry key="S5" value="3.2660565451259154" />
+      <entry key="S10" value="4.572330033274932" />
+      <entry key="S30" value="6.4825634901531926" />
+      <entry key="S60" value="7.409385726647978" />
+      <entry key="M2" value="8.24297998488707" />
+      <entry key="M5" value="11.259949771795487" />
+      <entry key="M10" value="21.41132702435823" />
+      <entry key="M15" value="30.713948757621857" />
+      <entry key="M30" value="47.0867830383723" />
+      <entry key="H1" value="59.49758225668121" />
+      <entry key="H2" value="67.16146915335622" />
+      <entry key="H4" value="71.42318506815161" />
+      <entry key="D1" value="75.2143417308512" />
+      <entry key="W1" value="75.88719021519869" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3LE7gNgl00pu1mHRFTaRiDzZAeO" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 11.0.27.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "ejercicioTresEnRaya",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/2dam/2DAM_26-27/PSP/TresEnRaya/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="config" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+          <value>
+            <map>
+              <entry key="Tomcat 11.0.27" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 11.0.27" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.27" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="TresEnRaya:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="0933a51e-c784-47cc-8b47-4865446a86b8" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="58044" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="TresEnRaya:war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b494acd3-c070-416c-b1a1-c753741c650c" name="Changes" comment="" />
+      <created>1793007494188</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1793007494188</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

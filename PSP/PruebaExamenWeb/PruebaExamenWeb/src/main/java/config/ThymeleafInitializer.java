@@ -11,32 +11,20 @@ import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 @WebListener
 public class ThymeleafInitializer implements ServletContextListener {
 
-    @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("=========================================");
-        System.out.println("¡ATENCIÓN! ARRANCANDO THYMELEAF...");
+        ServletContext servletContext = sce.getServletContext();
+        JakartaServletWebApplication application = JakartaServletWebApplication.buildApplication(servletContext);
 
-        try {
-            ServletContext servletContext = sce.getServletContext();
-            JakartaServletWebApplication application = JakartaServletWebApplication.buildApplication(servletContext);
+        WebApplicationTemplateResolver templateResolver = new WebApplicationTemplateResolver(application);
+        templateResolver.setPrefix(UrlConstants.TEMPLATE_PREFIX);
+        templateResolver.setSuffix(UrlConstants.TEMPLATE_SUFFIX);
+        templateResolver.setTemplateMode(ThymeleafConstants.TEMPLATE_MODE);
+        templateResolver.setCharacterEncoding(ThymeleafConstants.CHARACTER_ENCODING);
 
-            WebApplicationTemplateResolver templateResolver = new WebApplicationTemplateResolver(application);
-            templateResolver.setPrefix(UrlConstants.TEMPLATE_PREFIX);
-            templateResolver.setSuffix(UrlConstants.TEMPLATE_SUFFIX);
-            templateResolver.setTemplateMode(ThymeleafConstants.TEMPLATE_MODE);
-            templateResolver.setCharacterEncoding(ThymeleafConstants.CHARACTER_ENCODING);
+        TemplateEngine templateEngine = new TemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver);
 
-            TemplateEngine templateEngine = new TemplateEngine();
-            templateEngine.setTemplateResolver(templateResolver);
-
-            servletContext.setAttribute(ThymeleafConstants.TEMPLATE_ENGINE_ATTR, templateEngine);
-
-            System.out.println("¡THYMELEAF CARGADO CORRECTAMENTE EN MEMORIA!");
-            System.out.println("=========================================");
-
-        } catch (Exception e) {
-            System.out.println("ERROR FATAL AL ARRANCAR THYMELEAF:");
-            e.printStackTrace();
-        }
+        servletContext.setAttribute(ThymeleafConstants.TEMPLATE_ENGINE_ATTR, templateEngine);
     }
+
 }
